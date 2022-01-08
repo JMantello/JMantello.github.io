@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="js/script.js"></script>
+    <script
+      src="https://platform.linkedin.com/badges/js/profile.js"
+      async
+      defer
+      type="text/javascript"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jonathan Mantello's Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body onload="checkPreferredTheme()">
+    <div class="page-wrapper">
+      <div class="header-line"></div>
+      <div class="header">
+        <h1>Jonathan Mantello</h1>
+        <h2>Software Engineering Student at Renton Technical College</h2>
+        <div class="themePreferenceBox">
+          <p>Dark Theme</p>
+          <label class="switch">
+            <!-- From W3 Schools -->
+            <input
+              type="checkbox"
+              id="darkThemeCheckbox"
+              onclick="setCheckedTheme()"
+            />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="main-content-wrapper">
+        <div class="profileImgSection">
+          <img
+            class="profileImg"
+            src="Images\Photo of Me Square.JPG"
+            alt="Profile Image"
+          />
+        </div>
+
+        <div class="details-section">
+          <details open>
+            <summary>Bio</summary>
+            <p>
+              Hi, I am studying Application Development at Renton Technical
+              College and currently seeking internships, apprenticeships, or
+              entry-level software engineering opportunities to build upon my
+              career interests in front-end and back-end development, web
+              development, and data.
+            </p>
+            <p>
+              I am planning to attend Renton Technical College for 4 years to
+              obtain a B.A.S in Application Development and am particularly
+              interested in natural and life science fields such as space and
+              astronomy, meteorology, geology, oceanography, and microbiology. I
+              want to inspire positive change by working closely with discovery
+              and innovation.
+            </p>
+            <p>
+              Please feel free to look at the projects I have made for school
+              and outside of school on my GitHub profile linked below or under
+              the education section of my LinkedIn profile.
+            </p>
+          </details>
+
+          <details open>
+            <summary>Links</summary>
+            <div class="contact-links">
+              <a
+                href="https://www.linkedin.com/in/jonathan-mantello/"
+                target="blank"
+                class="link"
+              >
+                <i class="fa fa-linkedin-square"></i>
+                <p>LinkedIn</p>
+              </a>
+              <a
+                href="https://github.com/JMantello"
+                target="blank"
+                class="link"
+              >
+                <i class="fa fa-github"></i>
+                <p>GitHub</p>
+              </a>
+              <a href="mailto:jonathan.mantello@gmail.com" class="link">
+                <i class="fa fa-envelope-o"></i>
+                <p>Email</p>
+              </a>
+            </div>
+          </details>
+
+          <details open class="projects">
+            <summary>Projects</summary>
+            <ul>
+              <li>
+                <a
+                  href="https://github.com/JMantello/Web-Portfolio"
+                  target="blank"
+                >
+                  <h2>Web Portfolio</h2>
+                  <p>Current Iteration of my Web Portfolio</p>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/JMantello/Blackjack_JMantello"
+                  target="blank"
+                >
+                  <h2>Blackjack</h2>
+                  <p>C# WinForms Blackjack Project</p>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/JMantello/TicTacToe_JM"
+                  target="blank"
+                >
+                  <h2>Tic Tac Toe</h2>
+                  <p>Tic Tac Toe in Java</p>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/JMantello/CSI140_FinalProject_JMantello---Final"
+                  target="blank"
+                >
+                  <h2>CSI140 Front-End Web Development Final Project</h2>
+                  <p>Web Portfolio Project from Spring Quarter, 2021</p>
+                </a>
+              </li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
