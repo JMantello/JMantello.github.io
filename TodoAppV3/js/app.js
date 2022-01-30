@@ -7,19 +7,24 @@ function todoMain() {
   // List
   let todoList = [];
 
-  // Elements
+  // Input Elements
   let taskInput, dateDueInput, categoryInput, addTodoBtn;
   let categorySelectionElem, completedSelectionElem;
+  let showDateAddedCB,
+    showCategoryCB,
+    showTodoTaskCB,
+    showDateDueCB,
+    showCompletedCB,
+    showDeleteCB;
 
-  // Filters
+  // Table
+  let todoTable;
 
   getElements();
 
   addListeners();
 
   loadTodoList();
-
-  renderToHTML();
 
   function getElements() {
     taskInput = document.getElementById("task-input");
@@ -31,12 +36,27 @@ function todoMain() {
     completedSelectionElem = document.getElementById(
       "completed-sort-selection"
     );
+
+    showDateAddedCB = document.getElementById("filterDateAddedCB");
+    showCategoryCB = document.getElementById("filterCategoryCB");
+    showTodoTaskCB = document.getElementById("filterTodoTaskCB");
+    showDateDueCB = document.getElementById("filterDateDueCB");
+    showCompletedCB = document.getElementById("filterCompletedCB");
+    showDeleteCB = document.getElementById("filterDeleteCB");
+
+    todoTable = document.getElementById("todo-table");
   }
 
   function addListeners() {
     addTodoBtn.addEventListener("click", addTodo, false);
     categorySelectionElem.addEventListener("change", renderToHTML, false);
     completedSelectionElem.addEventListener("change", renderToHTML, false);
+    showDateAddedCB.addEventListener("change", renderToHTML, false);
+    showCategoryCB.addEventListener("change", renderToHTML, false);
+    showTodoTaskCB.addEventListener("change", renderToHTML, false);
+    showDateDueCB.addEventListener("change", renderToHTML, false);
+    showCompletedCB.addEventListener("change", renderToHTML, false);
+    showDeleteCB.addEventListener("change", renderToHTML, false);
   }
 
   function addTodo() {
@@ -91,9 +111,13 @@ function todoMain() {
       todoList = JSON.parse(savedData);
       console.log("Saved data loaded successfully.");
     }
+
+    renderToHTML();
   }
 
   function renderToHTML() {
+    renderTableHead();
+
     clearRows();
 
     populateCategoryOptions();
@@ -108,6 +132,44 @@ function todoMain() {
     filteredTodos.forEach((todo) => {
       renderRow(todo);
     });
+
+    hideColumns();
+  }
+
+  function renderTableHead() {
+    todoTable.innerHTML = "";
+
+    let headerRow = document.createElement("tr");
+    let dateAddedColumn = document.createElement("th");
+    let taskColumn = document.createElement("th");
+    let categoryColumn = document.createElement("th");
+    let dateDueColumn = document.createElement("th");
+    let completedColumn = document.createElement("th");
+    let deleteColumn = document.createElement("th");
+
+    dateAddedColumn.innerText = "Date Added";
+    taskColumn.innerText = "To-Do Task";
+    categoryColumn.innerText = "Category";
+    dateDueColumn.innerText = "Date Due";
+    completedColumn.innerText = "Completed";
+    deleteColumn.innerText = "Delete";
+
+    headerRow.id = "todo-table-header";
+    dateAddedColumn.classList.add("column-date-added");
+    taskColumn.classList.add("column-todo-task");
+    categoryColumn.classList.add("column-category");
+    dateDueColumn.classList.add("column-date-due");
+    completedColumn.classList.add("column-completed");
+    deleteColumn.classList.add("column-delete");
+
+    headerRow.appendChild(dateAddedColumn);
+    headerRow.appendChild(taskColumn);
+    headerRow.appendChild(categoryColumn);
+    headerRow.appendChild(dateDueColumn);
+    headerRow.appendChild(completedColumn);
+    headerRow.appendChild(deleteColumn);
+
+    todoTable.appendChild(headerRow);
   }
 
   function populateCategoryOptions() {
@@ -225,6 +287,13 @@ function todoMain() {
     let completedCell = document.createElement("td");
     let deleteCell = document.createElement("td");
 
+    dateAddedCell.classList.add("column-date-added");
+    dateDueCell.classList.add("column-date-due");
+    categoryCell.classList.add("column-category");
+    taskCell.classList.add("column-todo-task");
+    completedCell.classList.add("column-completed");
+    deleteCell.classList.add("column-delete");
+
     // Date Added:
     let dateAddedSpan = document.createElement("span");
     dateAddedSpan.classList.add("date-added-span");
@@ -252,7 +321,7 @@ function todoMain() {
 
     // To-Do Task:
     let taskSpan = document.createElement("span");
-    dateAddedSpan.classList.add("task-span");
+    taskSpan.classList.add("task-span");
     taskSpan.innerText = todo.task;
 
     // Completed:
@@ -312,6 +381,53 @@ function todoMain() {
           todoList.splice(i, 1);
           saveTodoList();
           renderToHTML(todoList);
+        }
+      }
+    }
+  }
+
+  function hideColumns() {
+    let showDateAdded = showDateAddedCB.checked;
+    let showCategory = showCategoryCB.checked;
+    let showTodoTask = showTodoTaskCB.checked;
+    let showDateDue = showDateDueCB.checked;
+    let showCompleted = showCompletedCB.checked;
+    let showDelete = showDeleteCB.checked;
+
+    let allTableRows = todoTable.getElementsByTagName("tr");
+
+    for (let i = 0; i < allTableRows.length; i++) {
+      let columns = allTableRows[i].children;
+      for (let j = 0; j < columns.length; j++) {
+        if (columns[j].classList.contains("column-date-added")) {
+          showDateAdded
+            ? columns[j].classList.remove("hide")
+            : columns[j].classList.add("hide");
+        }
+        if (columns[j].classList.contains("column-category")) {
+          showCategory
+            ? columns[j].classList.remove("hide")
+            : columns[j].classList.add("hide");
+        }
+        if (columns[j].classList.contains("column-todo-task")) {
+          showTodoTask
+            ? columns[j].classList.remove("hide")
+            : columns[j].classList.add("hide");
+        }
+        if (columns[j].classList.contains("column-date-due")) {
+          showDateDue
+            ? columns[j].classList.remove("hide")
+            : columns[j].classList.add("hide");
+        }
+        if (columns[j].classList.contains("column-completed")) {
+          showCompleted
+            ? columns[j].classList.remove("hide")
+            : columns[j].classList.add("hide");
+        }
+        if (columns[j].classList.contains("column-delete")) {
+          showDelete
+            ? columns[j].classList.remove("hide")
+            : columns[j].classList.add("hide");
         }
       }
     }

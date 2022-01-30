@@ -42,22 +42,22 @@
           <div class="filter-columns">
             <h2>Columns:</h2>
             <div class="filter-column-item">
-              Date Added<input type="checkbox" />
+              Date Added<input type="checkbox" id="filterDateAddedCB" checked />
             </div>
             <div class="filter-column-item">
-              Category<input type="checkbox" />
+              Category<input type="checkbox" id="filterCategoryCB" checked />
             </div>
             <div class="filter-column-item">
-              To-Do Task<input type="checkbox" />
+              To-Do Task<input type="checkbox" id="filterTodoTaskCB" checked />
             </div>
             <div class="filter-column-item">
-              Date Due<input type="checkbox" />
+              Date Due<input type="checkbox" id="filterDateDueCB" checked />
             </div>
             <div class="filter-column-item">
-              Completed<input type="checkbox" />
+              Completed<input type="checkbox" id="filterCompletedCB" checked />
             </div>
             <div class="filter-column-item">
-              Delete<input type="checkbox" />
+              Delete<input type="checkbox" id="filterDeleteCB" checked />
             </div>
           </div>
         </div>
@@ -79,12 +79,12 @@
           </div>
           <table class="todo-table" id="todo-table">
             <tr id="todo-table-header">
-              <th>Date Added</th>
-              <th>To-Do Task</th>
-              <th>Category</th>
-              <th>Date Due</th>
-              <th>Completed</th>
-              <th>Delete</th>
+              <th class="column-date-added">Date Added</th>
+              <th class="column-todo-task">To-Do Task</th>
+              <th class="column-category">Category</th>
+              <th class="column-date-due">Date Due</th>
+              <th class="column-completed">Completed</th>
+              <th class="column-delete">Delete</th>
             </tr>
           </table>
         </div>

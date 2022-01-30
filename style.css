@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
 html {
   height: 100%;
 }
@@ -24,20 +29,21 @@ body {
 }
 
 .header-line {
-  padding: 20px;
-  background: linear-gradient(#8a8a8a, #f8f8f8);
+  padding: 10px;
+  background: linear-gradient(#c5c5c5, #f8f8f8);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  /* background: #0175953f; */
 }
 
 .header {
-  padding: 0px;
   text-align: center;
-  font-weight: 300;
-  max-width: 1300px;
+  max-width: 1415px;
   margin: auto;
+  padding: 10px;
+  padding-top: 30px;
 }
 
 h1 {
-  padding: 5px;
   padding-top: 10px;
   margin: 0px;
   font-weight: 300;
@@ -48,54 +54,53 @@ h2 {
   padding: 10px;
   margin: 0px;
   font-weight: 300;
-  font-size: 21px;
+  font-size: 23px;
 }
 
 .themePreferenceBox {
-  text-align: right;
-  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px;
+  padding-right: 15px;
 }
 .themePreferenceBox p {
-  display: inline;
-  padding: 5px;
-  margin: 0px;
+  padding-right: 5px;
 }
 
 a {
-  color: black;
+  color: rgb(0, 0, 0);
   text-decoration: none;
+  transition: 0.5s;
 }
 
 a:hover {
-  color: #017595;
-  transition: 0.25s;
+  color: #017595c5;
 }
 
 .profileImg {
-  max-width: 230px;
-  max-height: 230px;
-  border-radius: 190px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-width: 215px;
+  max-height: 215px;
+  border-radius: 360px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
 .profileImgSection {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding-bottom: 55px;
+  padding-bottom: 20px;
 }
 
-@media screen and (min-width: 1600px) {
+@media screen and (min-width: 1300px) {
   .main-content-wrapper {
     display: flex;
     flex-direction: row;
+    gap: 50px;
   }
 
   .profileImgSection {
     align-self: flex-start;
-  }
-
-  .profileImg {
   }
 }
 
@@ -123,47 +128,50 @@ a:hover {
   padding: 5px;
 }
 
-/* Details Collapsable Panels */
 .details-section {
-  padding-left: 2.5vw;
-  padding-right: 2.5vw;
-  padding-bottom: 2.5vh;
+  padding: 15px;
 }
 
 details {
-  margin-top: 20px;
-  cursor: default;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  padding: 0.5em;
-  font-weight: 400;
-  font-size: 16px;
-}
-
-details[open] {
-  padding: 0.5em;
+  margin-top: 25px;
+  font-size: 15px;
+  background-color: #ffffffd8;
+  box-shadow: 1px 1px 5px rgb(162, 162, 162);
 }
 
 details[open] summary {
   border-bottom: 1px solid #aaa;
-  margin-bottom: 0.5em;
 }
 
 summary {
   font-weight: bold;
-  margin: -0.5em -0.5em 0;
-  padding: 0.5em;
+  padding: 10px;
+  background-color: #0175953f;
+}
+
+summary:hover {
+  cursor: pointer;
+}
+
+.details-content {
+  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 15px;
 }
 
 details p {
-  padding-left: 0.7vw;
-  padding-right: 0.7vw;
-  font-size: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+.projects ul {
+  padding-top: 10px;
 }
 
 .projects ul li {
-  margin-top: 17px;
-  margin-bottom: 17px;
+  margin-bottom: 5px;
 }
 
 .projects h2,
@@ -174,13 +182,14 @@ details p {
 }
 
 .projects h2 {
-  font-size: 17px;
-  padding: 2px;
+  font-size: 16px;
+  padding: 3px;
 }
 
 .projects p {
-  font-size: 16px;
+  font-size: 14px;
   text-indent: 15px;
+  padding-bottom: 5px;
 }
 
 /* Dark Mode */
@@ -190,7 +199,7 @@ body.dark-theme .main-content-wrapper {
 }
 
 body.dark-theme {
-  color: #c9cfd3;
+  color: #e0e0e0;
   background-color: rgb(43, 43, 43);
 }
 
@@ -208,19 +217,30 @@ body.dark-theme a:hover {
 
 body.dark-theme details {
   color: #c9cfd3;
-  background-color: rgb(27, 27, 27);
+  background-color: rgba(58, 48, 38, 0.331);
+  box-shadow: 1px 1px 5px rgb(12, 12, 12);
 }
+
+body.dark-theme summary {
+  background-color: #615b5b25;
+}
+
 body.dark-theme .header-line {
-  background: linear-gradient(#3a3a3a, rgb(27, 27, 27));
+  /* background: linear-gradient(#000000, rgb(27, 27, 27)); */
+  background: rgba(58, 48, 38, 0.331);
+}
+
+body.dark-theme .profileImg {
+  box-shadow: 0 0px 8px rgb(24, 24, 24);
 }
 
 /* The switch - the box around the slider */
 .switch {
   position: relative;
   display: inline-block;
-  width: 33px;
-  height: 20px;
-  min-width: 33px;
+  width: 30px;
+  height: 16px;
+  min-width: 30px;
 }
 
 /* Hide default HTML checkbox */
@@ -235,12 +255,11 @@ body.dark-theme .header-line {
   position: absolute;
   cursor: pointer;
   border-radius: 2px;
-  border: 1px solid black;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(82, 82, 82);
+  background-color: rgb(106, 130, 159);
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
@@ -249,8 +268,8 @@ body.dark-theme .header-line {
   position: absolute;
   content: "";
   border-radius: 1px;
-  height: 14px;
-  width: 14px;
+  height: 12px;
+  width: 13px;
   left: 2px;
   bottom: 2px;
   background-color: #f8f8f8;
@@ -259,7 +278,7 @@ body.dark-theme .header-line {
 }
 
 input:checked + .slider {
-  background-color: #b48609;
+  background-color: #b48609d5;
 }
 
 input:focus + .slider {
@@ -272,4 +291,3 @@ input:checked + .slider:before {
   transform: translateX(13px);
   background-color: rgb(24, 24, 24);
 }
-/* End of Dark Mode Switch CSS */

@@ -92,7 +92,6 @@ body {
   max-width: 135px;
   color: black;
   transition: background 270ms ease-in-out, transform 150ms ease;
-
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -144,17 +143,19 @@ body {
   font-size: 16px;
   color: rgb(44, 44, 44);
   padding-bottom: 3px;
-  /* font-style: italic; */
+  font-style: italic;
 }
 
 #add-todo-btn {
   border: none;
   padding: 0.4rem 1rem;
+  padding-top: 0.3rem;
+  height: 100%;
   margin: 0;
   text-decoration: none;
   background: #ccc;
   color: #000000;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   font-size: 1rem;
   line-height: 1;
   cursor: pointer;
@@ -167,11 +168,6 @@ body {
 #add-todo-btn:hover,
 #add-todo-btn:focus {
   background: rgb(253, 253, 253);
-}
-
-#add-todo-btn:focus {
-  outline: 1px solid #fff;
-  outline-offset: -4px;
 }
 
 #add-todo-btn:active {
@@ -194,8 +190,8 @@ body {
   border: 1px solid var(--table-accent-light);
   border-top: 2px solid var(--table-accent-dark);
   border-bottom: 1px solid var(--table-accent-dark);
-  /* font-style: italic; */
-  background-color: whitesmoke;
+  font-style: italic;
+  background-color: var(--table-accent-light);
   font-weight: 400;
 }
 #todo-table-header th:first-child {
@@ -208,8 +204,6 @@ body {
 #todo-table td {
   padding: 6px;
   border: 1px solid var(--table-accent-light);
-  /* border-left: 1px solid var(--table-accent-dark); */
-  /* border-right: 1px solid var(--table-accent-dark); */
 }
 
 #todo-table td:first-child {
@@ -237,4 +231,8 @@ body {
   display: flex;
   align-content: center;
   justify-content: center;
+}
+
+.hide {
+  display: none;
 }
