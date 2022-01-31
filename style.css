@@ -264,6 +264,7 @@ body.dark-theme details {
 
 body.dark-theme summary {
   background-color: var(--dark-red-accent2);
+  border-bottom: 1px solid rgb(65, 65, 65);
 }
 
 body.dark-theme .header-line {
