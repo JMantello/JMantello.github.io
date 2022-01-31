@@ -30,20 +30,20 @@
     />
   </head>
 
-  <body onload="checkPreferredTheme()">
+  <body onload="getPreferredTheme()">
     <div class="page-wrapper">
       <div class="header-line"></div>
       <div class="header">
         <h1>Jonathan Mantello</h1>
         <h2>Software Engineer Studying at Renton Technical College</h2>
-        <div class="themePreferenceBox">
+        <div class="theme-preference-section">
           <p>Dark Theme</p>
           <label class="switch">
             <!-- From W3 Schools -->
             <input
               type="checkbox"
               id="darkThemeCheckbox"
-              onclick="setCheckedTheme()"
+              onclick="setColorTheme()"
             />
             <span class="slider"></span>
           </label>
@@ -51,9 +51,9 @@
       </div>
 
       <div class="main-content-wrapper">
-        <div class="profileImgSection">
+        <div class="profile-img-section">
           <img
-            class="profileImg"
+            class="profile-img"
             src="Images\Photo of Me Square.JPG"
             alt="Profile Image"
           />
