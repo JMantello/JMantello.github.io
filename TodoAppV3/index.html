@@ -36,28 +36,34 @@
           </select>
           <select id="due-date-sort-selection" class="filter-selection-item">
             <option value="">Due Date</option>
-            <option value="Due Date: First">Due Date: First</option>
-            <option value="Due Date: Descending">Due Date: Last</option>
+            <option value="Date Due: First">Date Due: First</option>
+            <option value="Date Due: Last">Date Due: Last</option>
           </select>
           <div class="filter-columns">
             <h2>Columns:</h2>
             <div class="filter-column-item">
-              Date Added<input type="checkbox" id="filterDateAddedCB" checked />
+              <label for="filterDateAddedCB">Date Added</label>
+              <input type="checkbox" id="filterDateAddedCB" checked />
             </div>
             <div class="filter-column-item">
-              Category<input type="checkbox" id="filterCategoryCB" checked />
+              <label for="filterTodoTaskCB">To-Do Task</label>
+              <input type="checkbox" id="filterTodoTaskCB" checked />
             </div>
             <div class="filter-column-item">
-              To-Do Task<input type="checkbox" id="filterTodoTaskCB" checked />
+              <label for="filterCategoryCB">Category</label>
+              <input type="checkbox" id="filterCategoryCB" checked />
             </div>
             <div class="filter-column-item">
-              Date Due<input type="checkbox" id="filterDateDueCB" checked />
+              <label for="filterDateDueCB">Date Due</label>
+              <input type="checkbox" id="filterDateDueCB" checked />
             </div>
             <div class="filter-column-item">
-              Completed<input type="checkbox" id="filterCompletedCB" checked />
+              <label for="filterCompletedCB">Completed</label>
+              <input type="checkbox" id="filterCompletedCB" checked />
             </div>
             <div class="filter-column-item">
-              Delete<input type="checkbox" id="filterDeleteCB" checked />
+              <label for="filterDeleteCB">Delete</label>
+              <input type="checkbox" id="filterDeleteCB" checked />
             </div>
           </div>
         </div>

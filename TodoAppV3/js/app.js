@@ -5,11 +5,11 @@ window.addEventListener("load", () => {
 
 function todoMain() {
   // List
-  let todoList = [];
+  let todoData = [];
 
   // Input Elements
-  let taskInput, dateDueInput, categoryInput, addTodoBtn;
-  let categorySelectionElem, completedSelectionElem;
+  let taskInputElem, dateDueInputElem, categoryInputElem, addTodoBtn;
+  let sortDateAddedElem, sortCategoryElem, sortCompletedElem, sortDateDueElem;
   let showDateAddedCB,
     showCategoryCB,
     showTodoTaskCB,
@@ -27,15 +27,15 @@ function todoMain() {
   loadTodoList();
 
   function getElements() {
-    taskInput = document.getElementById("task-input");
-    dateDueInput = document.getElementById("due-date-input");
-    categoryInput = document.getElementById("category-input");
+    taskInputElem = document.getElementById("task-input");
+    dateDueInputElem = document.getElementById("due-date-input");
+    categoryInputElem = document.getElementById("category-input");
     addTodoBtn = document.getElementById("add-todo-btn");
 
-    categorySelectionElem = document.getElementById("category-sort-selection");
-    completedSelectionElem = document.getElementById(
-      "completed-sort-selection"
-    );
+    sortDateAddedElem = document.getElementById("date-added-sort-selection");
+    sortCategoryElem = document.getElementById("category-sort-selection");
+    sortCompletedElem = document.getElementById("completed-sort-selection");
+    sortDateDueElem = document.getElementById("due-date-sort-selection");
 
     showDateAddedCB = document.getElementById("filterDateAddedCB");
     showCategoryCB = document.getElementById("filterCategoryCB");
@@ -49,35 +49,37 @@ function todoMain() {
 
   function addListeners() {
     addTodoBtn.addEventListener("click", addTodo, false);
-    categorySelectionElem.addEventListener("change", renderToHTML, false);
-    completedSelectionElem.addEventListener("change", renderToHTML, false);
-    showDateAddedCB.addEventListener("change", renderToHTML, false);
-    showCategoryCB.addEventListener("change", renderToHTML, false);
-    showTodoTaskCB.addEventListener("change", renderToHTML, false);
-    showDateDueCB.addEventListener("change", renderToHTML, false);
-    showCompletedCB.addEventListener("change", renderToHTML, false);
-    showDeleteCB.addEventListener("change", renderToHTML, false);
+    sortDateAddedElem.addEventListener("change", renderHTML, false);
+    sortCategoryElem.addEventListener("change", renderHTML, false);
+    sortCompletedElem.addEventListener("change", renderHTML, false);
+    sortDateDueElem.addEventListener("change", renderHTML, false);
+    showDateAddedCB.addEventListener("change", renderHTML, false);
+    showCategoryCB.addEventListener("change", renderHTML, false);
+    showTodoTaskCB.addEventListener("change", renderHTML, false);
+    showDateDueCB.addEventListener("change", renderHTML, false);
+    showCompletedCB.addEventListener("change", renderHTML, false);
+    showDeleteCB.addEventListener("change", renderHTML, false);
   }
 
   function addTodo() {
     let todo = {
       id: generateUUID(),
       dateAdded: new Date().toUTCString(),
-      task: taskInput.value,
-      category: categoryInput.value,
-      dateDue: dateDueInput.value,
+      task: taskInputElem.value,
+      category: categoryInputElem.value,
+      dateDue: dateDueInputElem.value,
       completed: false,
     };
 
-    todoList.push(todo);
+    todoData.push(todo);
 
     saveTodoList();
 
-    renderToHTML();
+    renderHTML();
 
-    taskInput.value = "";
-    categoryInput.value = "";
-    dateDueInput.value = "";
+    taskInputElem.value = "";
+    categoryInputElem.value = "";
+    dateDueInputElem.value = "";
   }
 
   function generateUUID() {
@@ -99,41 +101,128 @@ function todoMain() {
   }
 
   function saveTodoList() {
-    localStorage.setItem("todoList", JSON.stringify(todoList));
+    localStorage.setItem("todoData", JSON.stringify(todoData));
   }
 
   function loadTodoList() {
-    let savedData = localStorage.getItem("todoList");
+    let savedData = localStorage.getItem("todoData");
     if (savedData == null) {
       saveTodoList();
-      console.log("No saved data found. New todoList created.");
+      console.log("No saved data found, new saved data created.");
     } else {
-      todoList = JSON.parse(savedData);
+      todoData = JSON.parse(savedData);
       console.log("Saved data loaded successfully.");
     }
 
-    renderToHTML();
+    renderHTML();
   }
 
-  function renderToHTML() {
+  function renderHTML() {
+    let todoList = getSortedTodos(getFilteredTodos(todoData));
+    renderTable(todoList);
+    populateCategoryOptions();
+  }
+
+  function getFilteredTodos() {
+    let selectedCategory = sortCategoryElem.value;
+    let selectedCompleted = sortCompletedElem.value;
+
+    let filteredTodos = [];
+
+    let filteredCategory = [];
+    if (selectedCategory == "default-category-option") {
+      filteredCategory = todoData;
+    } else {
+      filteredCategory = todoData.filter(
+        (todo) => todo.category == selectedCategory
+      );
+    }
+
+    filteredTodos = filteredCategory;
+
+    let filteredCompleted = [];
+    if (selectedCompleted == "Completed: Hide") {
+      filteredCompleted = filteredTodos.filter(
+        (todo) => todo.completed == false
+      );
+    } else {
+      filteredCompleted = filteredTodos;
+    }
+
+    filteredTodos = filteredCompleted;
+
+    return filteredTodos;
+  }
+
+  function getSortedTodos(todoList) {
+    let sortedTodos = [...todoList];
+
+    if (sortDateAddedElem.value == "Date Added: First") {
+      sortedTodos.sort((todoA, todoB) => {
+        let dateA = Date.parse(todoA.dateAdded);
+        let dateB = Date.parse(todoB.dateAdded);
+        return dateA - dateB;
+      });
+    }
+
+    if (sortDateAddedElem.value == "Date Added: Last") {
+      sortedTodos.sort((todoA, todoB) => {
+        let dateA = Date.parse(todoA.dateAdded);
+        let dateB = Date.parse(todoB.dateAdded);
+        return dateB - dateA;
+      });
+    }
+
+    // Under construction
+    if (sortCompletedElem.value == "Completed: Top") {
+      sortedTodos.sort((todo) => {
+        if (todo.completed) return -1;
+        else if (!todo.completed) return 1;
+        return 0;
+      });
+    }
+
+    if (sortCompletedElem.value == "Completed: Bottom") {
+      sortedTodos.sort((todo) => {
+        if (!todo.completed) return -1;
+        else if (todo.completed) return 1;
+        else return 0;
+      });
+    }
+
+    if (sortDateDueElem.value == "Date Due: First") {
+      sortedTodos.sort((todoA, todoB) => {
+        let dateA = Date.parse(todoA.dateDue);
+        let dateB = Date.parse(todoB.dateDue);
+        return dateA - dateB;
+      });
+    }
+
+    if (sortDateDueElem.value == "Date Due: Last") {
+      sortedTodos.sort((todoA, todoB) => {
+        let dateA = Date.parse(todoA.dateDue);
+        let dateB = Date.parse(todoB.dateDue);
+        return dateB - dateA;
+      });
+    }
+
+    return sortedTodos;
+  }
+
+  function renderTable(todoList) {
+    clearTable();
+
     renderTableHead();
 
-    clearRows();
-
-    populateCategoryOptions();
-
-    let filters = {
-      category: categorySelectionElem.value,
-      completed: completedSelectionElem.value,
-    };
-
-    let filteredTodos = getFilteredTodos(filters);
-
-    filteredTodos.forEach((todo) => {
+    todoList.forEach((todo) => {
       renderRow(todo);
     });
 
     hideColumns();
+  }
+
+  function clearTable() {
+    todoTable.innerHTML = "";
   }
 
   function renderTableHead() {
@@ -170,108 +259,6 @@ function todoMain() {
     headerRow.appendChild(deleteColumn);
 
     todoTable.appendChild(headerRow);
-  }
-
-  function populateCategoryOptions() {
-    let optionsSet = getCategoryOptionsSet();
-    let selectedCategory = categorySelectionElem.value;
-
-    // Note: populate category-list as well
-    populateCategoryInputOptions(optionsSet);
-
-    // Remove options
-    let optionsToRemove = categorySelectionElem.options.length;
-    for (let i = 1; i < optionsToRemove; i++) {
-      categorySelectionElem.options[1].remove();
-    }
-
-    // Populate options
-    for (let option of optionsSet) {
-      categorySelectionElem.appendChild(createCategoryOption(option));
-    }
-
-    function createCategoryOption(optionName) {
-      let newOption = document.createElement("option");
-      newOption.value = optionName;
-      newOption.innerText = optionName;
-      if (optionName == selectedCategory) {
-        newOption.selected = true;
-      }
-      return newOption;
-    }
-  }
-
-  function populateCategoryInputOptions(optionsSet) {
-    let categoryInputList = document.getElementById("category-input-list");
-    let optionsToRemove = categoryInputList.options.length;
-    let selectedCategory = categoryInputList.value;
-
-    for (let i = 0; i < optionsToRemove; i++) {
-      categoryInputList.options[0].remove();
-    }
-
-    // Populate options
-    for (let option of optionsSet) {
-      categoryInputList.appendChild(createCategoryOption(option));
-    }
-
-    function createCategoryOption(optionName) {
-      let newOption = document.createElement("option");
-      newOption.value = optionName;
-      newOption.innerText = optionName;
-      if (optionName == selectedCategory) {
-        newOption.selected = true;
-      }
-      return newOption;
-    }
-  }
-
-  function getCategoryOptionsSet() {
-    let options = [];
-
-    todoList.forEach((todo) => {
-      options.push(todo.category);
-    });
-
-    return new Set(options);
-  }
-
-  function getFilteredTodos(filters) {
-    let selectedCategory = filters.category;
-    let selectedCompleted = filters.completed;
-
-    let filteredTodos = [];
-
-    let filteredCategory = [];
-    if (selectedCategory == "default-category-option") {
-      filteredCategory = todoList;
-    } else {
-      filteredCategory = todoList.filter(
-        (todo) => todo.category == selectedCategory
-      );
-    }
-
-    filteredTodos = filteredCategory;
-
-    let filteredCompleted = [];
-    if (selectedCompleted == "Completed: Hide") {
-      filteredCompleted = filteredTodos.filter(
-        (todo) => todo.completed == false
-      );
-    } else {
-      filteredCompleted = filteredTodos;
-    }
-
-    filteredTodos = filteredCompleted;
-
-    return filteredTodos;
-  }
-
-  function clearRows() {
-    let todoRows = Array.from(document.getElementsByClassName("todo-row"));
-    todoRows.forEach((row) => {
-      row.remove();
-    });
   }
 
   function renderRow(todo) {
@@ -361,9 +348,9 @@ function todoMain() {
 
     // Row Functions
     function toggleCompleted() {
-      for (let i = 0; i < todoList.length; i++) {
-        if (todoList[i].id == todo.id) {
-          todoList[i].completed = completedCheckbox.checked;
+      for (let i = 0; i < todoData.length; i++) {
+        if (todoData[i].id == todo.id) {
+          todoData[i].completed = completedCheckbox.checked;
           saveTodoList();
         }
       }
@@ -376,11 +363,11 @@ function todoMain() {
     }
 
     function deleteTodo() {
-      for (let i = 0; i < todoList.length; i++) {
-        if (todoList[i].id == todo.id) {
-          todoList.splice(i, 1);
+      for (let i = 0; i < todoData.length; i++) {
+        if (todoData[i].id == todo.id) {
+          todoData.splice(i, 1);
           saveTodoList();
-          renderToHTML(todoList);
+          renderHTML();
         }
       }
     }
@@ -394,42 +381,94 @@ function todoMain() {
     let showCompleted = showCompletedCB.checked;
     let showDelete = showDeleteCB.checked;
 
-    let allTableRows = todoTable.getElementsByTagName("tr");
+    let tableRows = todoTable.getElementsByTagName("tr");
 
-    for (let i = 0; i < allTableRows.length; i++) {
-      let columns = allTableRows[i].children;
-      for (let j = 0; j < columns.length; j++) {
-        if (columns[j].classList.contains("column-date-added")) {
-          showDateAdded
-            ? columns[j].classList.remove("hide")
-            : columns[j].classList.add("hide");
-        }
-        if (columns[j].classList.contains("column-category")) {
-          showCategory
-            ? columns[j].classList.remove("hide")
-            : columns[j].classList.add("hide");
-        }
-        if (columns[j].classList.contains("column-todo-task")) {
-          showTodoTask
-            ? columns[j].classList.remove("hide")
-            : columns[j].classList.add("hide");
-        }
-        if (columns[j].classList.contains("column-date-due")) {
-          showDateDue
-            ? columns[j].classList.remove("hide")
-            : columns[j].classList.add("hide");
-        }
-        if (columns[j].classList.contains("column-completed")) {
-          showCompleted
-            ? columns[j].classList.remove("hide")
-            : columns[j].classList.add("hide");
-        }
-        if (columns[j].classList.contains("column-delete")) {
-          showDelete
-            ? columns[j].classList.remove("hide")
-            : columns[j].classList.add("hide");
-        }
-      }
+    Array.from(tableRows).forEach((row) => {
+      Array.from(row.children).forEach((column) => {
+        if (column.classList.contains("column-date-added") && !showDateAdded)
+          column.remove();
+
+        if (column.classList.contains("column-date-added") && !showDateAdded)
+          column.remove();
+
+        if (column.classList.contains("column-category") && !showCategory)
+          column.remove();
+
+        if (column.classList.contains("column-todo-task") && !showTodoTask)
+          column.remove();
+
+        if (column.classList.contains("column-date-due") && !showDateDue)
+          column.remove();
+
+        if (column.classList.contains("column-completed") && !showCompleted)
+          column.remove();
+
+        if (column.classList.contains("column-delete") && !showDelete)
+          column.remove();
+      });
+    });
+  }
+
+  function populateCategoryOptions() {
+    let optionsSet = getCategoryOptionsSet();
+    let selectedCategory = sortCategoryElem.value;
+
+    // Note: populate category-list as well
+    populateCategoryInputOptions(optionsSet);
+
+    // Remove options
+    let optionsToRemove = sortCategoryElem.options.length;
+    for (let i = 1; i < optionsToRemove; i++) {
+      sortCategoryElem.options[1].remove();
     }
+
+    // Populate options
+    for (let option of optionsSet) {
+      sortCategoryElem.appendChild(createCategoryOption(option));
+    }
+
+    function createCategoryOption(optionName) {
+      let newOption = document.createElement("option");
+      newOption.value = optionName;
+      newOption.innerText = optionName;
+      if (optionName == selectedCategory) {
+        newOption.selected = true;
+      }
+      return newOption;
+    }
+  }
+
+  function populateCategoryInputOptions(optionsSet) {
+    let categoryInputList = document.getElementById("category-input-list");
+    let selectedCategory = categoryInputList.value;
+
+    Array.from(categoryInputList.options).forEach((option) => {
+      option.remove();
+    });
+
+    // Populate options
+    for (let option of optionsSet) {
+      categoryInputList.appendChild(createCategoryOption(option));
+    }
+
+    function createCategoryOption(optionName) {
+      let newOption = document.createElement("option");
+      newOption.value = optionName;
+      newOption.innerText = optionName;
+      if (optionName == selectedCategory) {
+        newOption.selected = true;
+      }
+      return newOption;
+    }
+  }
+
+  function getCategoryOptionsSet() {
+    let options = [];
+
+    todoData.forEach((todo) => {
+      options.push(todo.category);
+    });
+
+    return new Set(options);
   }
 }

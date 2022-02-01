@@ -59,25 +59,6 @@ body {
   padding-top: 2px;
 }
 
-.filter-column-item:first-of-type {
-  margin-top: 5px;
-}
-
-.filter-columns {
-  padding-top: 28px;
-}
-
-.filter-column-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 135px;
-  padding-left: 5px;
-  padding-right: 10px;
-  height: 20px;
-  font-weight: 300;
-}
-
 .todo-filter-section select:first-of-type {
   margin-top: 5px;
 }
@@ -98,6 +79,57 @@ body {
 .todo-filter-section select:hover {
   background-color: whitesmoke;
 }
+
+.filter-column-item:first-of-type {
+  margin-top: 5px;
+}
+
+.filter-columns {
+  padding-top: 28px;
+}
+
+.filter-column-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 135px;
+  padding-left: 5px;
+  padding-right: 10px;
+  height: 20px;
+  font-weight: 300;
+}
+
+.filter-column-item label {
+  cursor: pointer;
+  flex: 1;
+}
+
+/* Checkbox Styling in progress */
+
+.filter-column-item input {
+  cursor: pointer;
+  /* opacity: 0;
+  position: absolute; */
+}
+
+/* .filter-column-item::after {
+  cursor: pointer;
+  content: "";
+  width: 1em;
+  height: 1em;
+  border: 0.05em solid black;
+  border-radius: 0.1em;
+} */
+
+/* .filter-column-item:hover::after {
+  background-color: gray;
+} */
+
+/* .filter-column-item
+  input[type="checkbox"]:checked
+  + .filter-column-item::after {
+  background-color: rgb(118, 118, 118);
+} */
 
 .todo-input-output-section {
   display: flex;
