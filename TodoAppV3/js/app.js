@@ -4,8 +4,10 @@ window.addEventListener("load", () => {
 });
 
 function todoMain() {
-  // List
   let todoData = [];
+  let inputState = [];
+
+  let todoTable;
 
   // Input Elements
   let taskInputElem, dateDueInputElem, categoryInputElem, addTodoBtn;
@@ -17,14 +19,15 @@ function todoMain() {
     showCompletedCB,
     showDeleteCB;
 
-  // Table
-  let todoTable;
+  initApp();
 
-  getElements();
+  function initApp() {
+    getElements();
 
-  addListeners();
+    addListeners();
 
-  loadTodoList();
+    loadTodoList();
+  }
 
   function getElements() {
     taskInputElem = document.getElementById("task-input");
@@ -49,7 +52,7 @@ function todoMain() {
 
   function addListeners() {
     addTodoBtn.addEventListener("click", addTodo, false);
-    sortDateAddedElem.addEventListener("change", renderHTML, false);
+    sortDateAddedElem.addEventListener("change", handleChangedState, false);
     sortCategoryElem.addEventListener("change", renderHTML, false);
     sortCompletedElem.addEventListener("change", renderHTML, false);
     sortDateDueElem.addEventListener("change", renderHTML, false);
@@ -59,6 +62,17 @@ function todoMain() {
     showDateDueCB.addEventListener("change", renderHTML, false);
     showCompletedCB.addEventListener("change", renderHTML, false);
     showDeleteCB.addEventListener("change", renderHTML, false);
+  }
+
+  function handleChangedState() {
+    let functions = [recordState, renderHTML];
+    functions.forEach((fn) => {
+      fn();
+    });
+  }
+
+  function recordState() {
+    console.log("Recorded state successfully. ");
   }
 
   function addTodo() {
@@ -175,17 +189,17 @@ function todoMain() {
 
     // Under construction
     if (sortCompletedElem.value == "Completed: Top") {
-      sortedTodos.sort((todo) => {
-        if (todo.completed) return -1;
-        else if (!todo.completed) return 1;
-        return 0;
+      sortedTodos.sort((todoA, todoB) => {
+        if (!todoA.completed && todoB.completed) return 1;
+        else if (todoA.completed && !todoB.completed) return -1;
+        else return 0;
       });
     }
 
     if (sortCompletedElem.value == "Completed: Bottom") {
-      sortedTodos.sort((todo) => {
-        if (!todo.completed) return -1;
-        else if (todo.completed) return 1;
+      sortedTodos.sort((todoA, todoB) => {
+        if (!todoA.completed && todoB.completed) return -1;
+        else if (todoA.completed && !todoB.completed) return 1;
         else return 0;
       });
     }
