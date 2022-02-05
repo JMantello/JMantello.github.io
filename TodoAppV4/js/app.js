@@ -1,32 +1,43 @@
 window.addEventListener("load", () => {
   todoMain();
-  console.log("The app loaded successfully.");
+  console.log("To-Do List loaded successfully.");
 });
 
 function todoMain() {
-  let todoData = [];
-  let inputState = [];
-
-  let todoTable;
-
   // Input Elements
-  let taskInputElem, dateDueInputElem, categoryInputElem, addTodoBtn;
-  let sortDateAddedElem, sortCategoryElem, sortCompletedElem, sortDateDueElem;
-  let showDateAddedCB,
-    showCategoryCB,
+  let taskInputElem,
+    dateDueInputElem,
+    categoryInputElem,
+    addTodoBtn,
+    sortDateAddedElem,
+    sortCategoryElem,
+    sortCompletedElem,
+    sortDateDueElem,
+    showDateAddedCB,
     showTodoTaskCB,
+    showCategoryCB,
     showDateDueCB,
     showCompletedCB,
     showDeleteCB;
+
+  // HTML Table
+  let todoTable;
+
+  // Local app data
+  let todoData = [];
+  let sortView = [];
+  let columnView = [];
+
+  let sortElems = [];
+  let columnViewElems = [];
 
   initApp();
 
   function initApp() {
     getElements();
-
-    addListeners();
-
-    loadTodoList();
+    retrieveAppData();
+    loadAppData();
+    renderTable();
   }
 
   function getElements() {
@@ -34,45 +45,49 @@ function todoMain() {
     dateDueInputElem = document.getElementById("due-date-input");
     categoryInputElem = document.getElementById("category-input");
     addTodoBtn = document.getElementById("add-todo-btn");
-
     sortDateAddedElem = document.getElementById("date-added-sort-selection");
     sortCategoryElem = document.getElementById("category-sort-selection");
     sortCompletedElem = document.getElementById("completed-sort-selection");
     sortDateDueElem = document.getElementById("due-date-sort-selection");
-
     showDateAddedCB = document.getElementById("filterDateAddedCB");
     showCategoryCB = document.getElementById("filterCategoryCB");
     showTodoTaskCB = document.getElementById("filterTodoTaskCB");
     showDateDueCB = document.getElementById("filterDateDueCB");
     showCompletedCB = document.getElementById("filterCompletedCB");
     showDeleteCB = document.getElementById("filterDeleteCB");
-
     todoTable = document.getElementById("todo-table");
+
+    sortElems = [
+      sortDateAddedElem,
+      sortCategoryElem,
+      sortCompletedElem,
+      sortDateDueElem,
+    ];
+
+    columnViewElems = [
+      showDateAddedCB,
+      showCategoryCB,
+      showTodoTaskCB,
+      showDateDueCB,
+      showCompletedCB,
+      showDeleteCB,
+    ];
+
+    addListeners();
   }
 
   function addListeners() {
     addTodoBtn.addEventListener("click", addTodo, false);
-    sortDateAddedElem.addEventListener("change", handleChangedState, false);
-    sortCategoryElem.addEventListener("change", renderHTML, false);
-    sortCompletedElem.addEventListener("change", renderHTML, false);
-    sortDateDueElem.addEventListener("change", renderHTML, false);
-    showDateAddedCB.addEventListener("change", renderHTML, false);
-    showCategoryCB.addEventListener("change", renderHTML, false);
-    showTodoTaskCB.addEventListener("change", renderHTML, false);
-    showDateDueCB.addEventListener("change", renderHTML, false);
-    showCompletedCB.addEventListener("change", renderHTML, false);
-    showDeleteCB.addEventListener("change", renderHTML, false);
-  }
-
-  function handleChangedState() {
-    let functions = [recordState, renderHTML];
-    functions.forEach((fn) => {
-      fn();
-    });
-  }
-
-  function recordState() {
-    console.log("Recorded state successfully. ");
+    sortDateAddedElem.addEventListener("change", recordSortState, false);
+    sortCategoryElem.addEventListener("change", recordSortState, false);
+    sortCompletedElem.addEventListener("change", recordSortState, false);
+    sortDateDueElem.addEventListener("change", recordSortState, false);
+    showDateAddedCB.addEventListener("change", recordColumnState, false);
+    showTodoTaskCB.addEventListener("change", recordColumnState, false);
+    showCategoryCB.addEventListener("change", recordColumnState, false);
+    showDateDueCB.addEventListener("change", recordColumnState, false);
+    showCompletedCB.addEventListener("change", recordColumnState, false);
+    showDeleteCB.addEventListener("change", recordColumnState, false);
   }
 
   function addTodo() {
@@ -87,13 +102,13 @@ function todoMain() {
 
     todoData.push(todo);
 
-    saveTodoList();
-
-    renderHTML();
+    saveTodoData();
 
     taskInputElem.value = "";
     categoryInputElem.value = "";
     dateDueInputElem.value = "";
+
+    renderTable();
   }
 
   function generateUUID() {
@@ -114,30 +129,83 @@ function todoMain() {
     );
   }
 
-  function saveTodoList() {
+  function doEach(functions) {
+    functions.forEach((fn) => {
+      fn();
+    });
+  }
+
+  function recordSortState() {
+    sortView = [
+      sortDateAddedElem.value,
+      sortCategoryElem.value,
+      sortCompletedElem.value,
+      sortDateDueElem.value,
+    ];
+
+    saveSortView();
+    renderTable();
+  }
+
+  function recordColumnState() {
+    columnView = [
+      showDateAddedCB.checked,
+      showTodoTaskCB.checked,
+      showCategoryCB.checked,
+      showDateDueCB.checked,
+      showCompletedCB.checked,
+      showDeleteCB.checked,
+    ];
+
+    saveColumnView();
+    renderTable();
+  }
+
+  function saveTodoData() {
     localStorage.setItem("todoData", JSON.stringify(todoData));
   }
 
-  function loadTodoList() {
-    let savedData = localStorage.getItem("todoData");
-    if (savedData == null) {
-      saveTodoList();
-      console.log("No saved data found, new saved data created.");
-    } else {
-      todoData = JSON.parse(savedData);
-      console.log("Saved data loaded successfully.");
-    }
-
-    renderHTML();
+  function saveSortView() {
+    localStorage.setItem("sortView", JSON.stringify(sortView));
   }
 
-  function renderHTML() {
-    let todoList = getSortedTodos(getFilteredTodos(todoData));
-    renderTable(todoList);
-    populateCategoryOptions();
+  function saveColumnView() {
+    localStorage.setItem("columnView", JSON.stringify(columnView));
+  }
+
+  function retrieveAppData() {
+    let localTodoData = localStorage.getItem("todoData");
+    let localSortView = localStorage.getItem("sortView");
+    let localColumnView = localStorage.getItem("columnView");
+
+    if (localTodoData == null) saveTodoData();
+    else todoData = JSON.parse(localTodoData);
+
+    if (localSortView == null) saveSortView();
+    else sortView = JSON.parse(localSortView);
+
+    if (localColumnView == null) saveColumnView();
+    else columnView = JSON.parse(localColumnView);
+  }
+
+  function loadAppData() {
+    retrieveAppData();
+
+    loadCategoryInputOptions();
+
+    loadSortCategoryOptions();
+
+    sortElems.forEach((elem, index) => {
+      elem.value = sortView[index];
+    });
+
+    columnViewElems.forEach((elem, index) => {
+      elem.checked = columnView[index];
+    });
   }
 
   function getFilteredTodos() {
+    // There's a better way to calculate order ...but how?
     let selectedCategory = sortCategoryElem.value;
     let selectedCompleted = sortCompletedElem.value;
 
@@ -223,12 +291,14 @@ function todoMain() {
     return sortedTodos;
   }
 
-  function renderTable(todoList) {
+  function renderTable() {
+    let todos = getSortedTodos(getFilteredTodos(todoData));
+
     clearTable();
 
     renderTableHead();
 
-    todoList.forEach((todo) => {
+    todos.forEach((todo) => {
       renderRow(todo);
     });
 
@@ -240,7 +310,7 @@ function todoMain() {
   }
 
   function renderTableHead() {
-    todoTable.innerHTML = "";
+    clearTable();
 
     let headerRow = document.createElement("tr");
     let dateAddedColumn = document.createElement("th");
@@ -365,7 +435,7 @@ function todoMain() {
       for (let i = 0; i < todoData.length; i++) {
         if (todoData[i].id == todo.id) {
           todoData[i].completed = completedCheckbox.checked;
-          saveTodoList();
+          saveTodoData();
         }
       }
     }
@@ -380,8 +450,8 @@ function todoMain() {
       for (let i = 0; i < todoData.length; i++) {
         if (todoData[i].id == todo.id) {
           todoData.splice(i, 1);
-          saveTodoList();
-          renderHTML();
+          saveTodoData();
+          renderTable();
         }
       }
     }
@@ -389,8 +459,8 @@ function todoMain() {
 
   function hideColumns() {
     let showDateAdded = showDateAddedCB.checked;
-    let showCategory = showCategoryCB.checked;
     let showTodoTask = showTodoTaskCB.checked;
+    let showCategory = showCategoryCB.checked;
     let showDateDue = showDateDueCB.checked;
     let showCompleted = showCompletedCB.checked;
     let showDelete = showDeleteCB.checked;
@@ -405,10 +475,10 @@ function todoMain() {
         if (column.classList.contains("column-date-added") && !showDateAdded)
           column.remove();
 
-        if (column.classList.contains("column-category") && !showCategory)
+        if (column.classList.contains("column-todo-task") && !showTodoTask)
           column.remove();
 
-        if (column.classList.contains("column-todo-task") && !showTodoTask)
+        if (column.classList.contains("column-category") && !showCategory)
           column.remove();
 
         if (column.classList.contains("column-date-due") && !showDateDue)
@@ -423,60 +493,35 @@ function todoMain() {
     });
   }
 
-  function populateCategoryOptions() {
-    let optionsSet = getCategoryOptionsSet();
-    let selectedCategory = sortCategoryElem.value;
-
-    // Note: populate category-list as well
-    populateCategoryInputOptions(optionsSet);
-
-    // Remove options
-    let optionsToRemove = sortCategoryElem.options.length;
-    for (let i = 1; i < optionsToRemove; i++) {
-      sortCategoryElem.options[1].remove();
-    }
-
-    // Populate options
-    for (let option of optionsSet) {
-      sortCategoryElem.appendChild(createCategoryOption(option));
-    }
-
-    function createCategoryOption(optionName) {
-      let newOption = document.createElement("option");
-      newOption.value = optionName;
-      newOption.innerText = optionName;
-      if (optionName == selectedCategory) {
-        newOption.selected = true;
-      }
-      return newOption;
-    }
-  }
-
-  function populateCategoryInputOptions(optionsSet) {
-    let categoryInputList = document.getElementById("category-input-list");
-    let selectedCategory = categoryInputList.value;
-
-    Array.from(categoryInputList.options).forEach((option) => {
+  function loadCategoryInputOptions() {
+    let prevOptions = document.getElementById("category-input-list").options;
+    Array.from(prevOptions).forEach((option) => {
       option.remove();
     });
 
-    // Populate options
-    for (let option of optionsSet) {
-      categoryInputList.appendChild(createCategoryOption(option));
-    }
-
-    function createCategoryOption(optionName) {
-      let newOption = document.createElement("option");
-      newOption.value = optionName;
-      newOption.innerText = optionName;
-      if (optionName == selectedCategory) {
-        newOption.selected = true;
-      }
-      return newOption;
+    for (let option of getCategoryOptions()) {
+      categoryInputElem.appendChild(createCategoryOption(option));
     }
   }
 
-  function getCategoryOptionsSet() {
+  function loadSortCategoryOptions() {
+    Array.from(sortCategoryElem.options).forEach((option, index) => {
+      if (index != 0) option.remove();
+    });
+
+    for (let option of getCategoryOptions()) {
+      sortCategoryElem.appendChild(createCategoryOption(option));
+    }
+  }
+
+  function createCategoryOption(optionName) {
+    let newOption = document.createElement("option");
+    newOption.value = optionName;
+    newOption.innerText = optionName;
+    return newOption;
+  }
+
+  function getCategoryOptions() {
     let options = [];
 
     todoData.forEach((todo) => {

@@ -23,6 +23,10 @@ body {
   max-width: 800px;
 }
 
+#header-h2 {
+  padding-bottom: 10px;
+}
+
 .main-content h2 {
   font-weight: 300;
   font-size: 30px;
@@ -70,7 +74,7 @@ body {
   padding: 0px;
   padding-top: 3px;
   padding-bottom: 3px;
-  max-width: 135px;
+  max-width: 155px;
   color: black;
   transition: background 270ms ease-in-out, transform 150ms ease;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -92,7 +96,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 135px;
   padding-left: 5px;
   padding-right: 10px;
   height: 20px;
@@ -166,28 +169,14 @@ body {
 
 #add-todo-btn {
   width: 65px;
-  background-color: rgb(250, 250, 250);
   cursor: pointer;
   border-radius: 14px;
-  /* border-color: rgb(157, 161, 102); */
-  border-color: rgb(119, 128, 121);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px;
-  color: rgb(44, 44, 44);
-  padding-bottom: 3px;
-  font-style: italic;
-}
-
-#add-todo-btn {
   border: none;
   padding: 0.4rem 1rem;
   padding-top: 0.3rem;
   height: 100%;
-  margin: 0;
-  text-decoration: none;
   background: #ccc;
-  color: #000000;
-  /* font-family: sans-serif; */
   font-size: 1rem;
   line-height: 1;
   cursor: pointer;
@@ -195,11 +184,16 @@ body {
   transition: background 270ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
+  box-shadow: 0.2rem 0.2rem rgb(119, 128, 121);
 }
 
 #add-todo-btn:hover,
 #add-todo-btn:focus {
   background: rgb(253, 253, 253);
+}
+
+#add-todo-btn:focus {
+  outline: 1px solid gray;
 }
 
 #add-todo-btn:active {

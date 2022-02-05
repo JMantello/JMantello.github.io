@@ -13,15 +13,14 @@
     <title>To-Do List</title>
   </head>
   <body>
-    <div class="header"></div>
     <div class="main-content">
-      <h2>To-Do List</h2>
+      <h2 id="header-h2">To-Do List</h2>
       <br />
       <div class="todo-components-wrapper">
         <div class="todo-filter-section">
           <h2>Filters:</h2>
           <select id="date-added-sort-selection" class="filter-selection-item">
-            <option value="">Date Added</option>
+            <option value="default-date-added-selection">Date Added</option>
             <option value="Date Added: First">Date Added: First</option>
             <option value="Date Added: Last">Date Added: Last</option>
           </select>
@@ -35,7 +34,7 @@
             <option value="Completed: Hide">Completed: Hide</option>
           </select>
           <select id="due-date-sort-selection" class="filter-selection-item">
-            <option value="">Due Date</option>
+            <option value="default-date-due-selection">Due Date</option>
             <option value="Date Due: First">Date Due: First</option>
             <option value="Date Due: Last">Date Due: Last</option>
           </select>
