@@ -1,252 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script src="js/script.js"></script>
-    <script
-      src="https://platform.linkedin.com/badges/js/profile.js"
-      async
-      defer
-      type="text/javascript"
-    ></script>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jonathan Mantello's Website</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@300;400&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
 
-  <body onload="getPreferredTheme()">
-    <div class="page-wrapper">
-      <div class="header-line"></div>
-      <div class="header">
-        <h1>Jonathan Mantello</h1>
-        <h2>Software Engineer Studying at Renton Technical College</h2>
-        <div class="theme-preference-section">
-          <p>Dark Theme</p>
-          <label class="switch">
-            <input
-              type="checkbox"
-              id="darkThemeCheckbox"
-              onclick="setColorTheme()"
-            />
-            <span class="slider"></span>
-          </label>
-        </div>
-      </div>
+<head>
+  <script src="js/script.js"></script>
+  <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonathan Mantello's Website</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@300;400&display=swap" rel="stylesheet" />
+  <!-- Font Awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 
-      <div class="main-content-wrapper">
-        <div class="profile-img-section">
-          <img
-            class="profile-img"
-            src="Images\Photo of Me Square.JPG"
-            alt="Profile Image"
-          />
-        </div>
-
-        <div class="details-section">
-          <details open>
-            <summary>Bio</summary>
-            <div class="details-content">
-              <p>
-                With the encouragement and support of my parents, my family, and
-                my friends, I decided to following the path that curiosity,
-                ambition, and commitment leads me, and study computer science at
-                Renton Technical College. I am currently pursuing a career in
-                software development.
-              </p>
-
-              <p>
-                I also hold an associate's degree in Digital Audio
-                Engineering obtained from Shoreline Community College in 2018,
-                and will be completing my bachelors's degree in Application Development
-                at Renton Technical College in Spring of 2024. I am currently
-                seeking out internships, apprenticeships, and entry-level
-                software engineering opportunities. I am also very interested in
-                the natural and life sciences, including space and astronomy,
-                meteorology, geology, oceanography, and microbiology.
-              </p>
-
-              <p>
-                Everyone once in their lives, if they have the capacity, should
-                experience live music. I've been collaborating with musicians
-                and songwriters to compose, record, and perform original music
-                since I was 12 years old. The lessons I have learned from music about being
-                open with my ideas and being able to accept success and failure
-                while expressing them has helped me tremendously. When making
-                music with others, it is about having a common investment in the
-                creation of great sounds.
-              </p>
-
-              <p>
-                Please check out some of my projects on my GitHub account linked
-                below, or under the education section of my LinkedIn profile.
-                There are also links in the section below.
-              </p>
-            </div>
-          </details>
-
-          <details>
-            <summary>Music</summary>
-            <div class="details-content">
-              <div class="embeddedVideo">
-                <p>
-                  Here's I am at 12 years old on the left guitar with my first
-                  band, Castbound:
-                </p>
-                <iframe
-                  width="560"
-                  height="315"
-                  src="https://www.youtube.com/embed/5xOUxPbDapc"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-
-              <div class="embeddedVideo">
-                <p>
-                  And here on bass with COSMOS at the EMP Sound Off! in 2016:
-                </p>
-                <iframe
-                  width="560"
-                  height="315"
-                  src="https://www.youtube.com/embed/ozdPQcVEOXs"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-            </div>
-          </details>
-
-          <details open>
-            <summary>Links</summary>
-            <div class="details-content">
-              <div class="contact-links">
-                <a
-                  href="https://www.linkedin.com/in/jonathan-mantello/"
-                  target="blank"
-                  class="link"
-                >
-                  <i class="fa fa-linkedin-square"></i>
-                  <p>LinkedIn</p>
-                </a>
-                <a
-                  href="https://github.com/JMantello"
-                  target="blank"
-                  class="link"
-                >
-                  <i class="fa fa-github"></i>
-                  <p>GitHub</p>
-                </a>
-                <a href="/Resume/JMantello_Resume_August_2022.pdf" class="link">
-                  <i class="fa fa-file-pdf-o"></i>
-                  <p>Resume</p>
-                </a>
-                <a href="mailto:jonathan.mantello@gmail.com" class="link">
-                  <i class="fa fa-envelope-o"></i>
-                  <p>Email</p>
-                </a>
-              </div>
-            </div>
-          </details>
-
-          <details open class="projects">
-            <summary>Projects</summary>
-            <div class="details-content">
-              <ul>
-                <li>
-                  <a href="https://github.com/JMantello/Calendar-Web-App" target="blank">
-                    <h2>Calendar Web App</h2>
-                    <p>
-                      A calendar-like scheduling system allowing for scheduling and maintaining appointments with multiple clients, similar to Calendly and Hubspot.
-                    </p>
-                  </a>
-                </li>
-                <li>
-                  <a href="/JavaScriptFrameVisualizer/" target="blank">
-                    <h2>JavaScript Frame Analyzer</h2>
-                    <p>
-                      A Javascript Scope/Frame Analyzer written in
-                      JavaScript, designed for client-side scripting class requirements.
-                    </p>
-                  </a>
-                </li>
-                <li>
-                  <a href="/Asteroids/" target="blank">
-                    <h2>Asteroids</h2>
-                    <p>
-                      Asteroids game project using P5.js, based off of The Coding
-                      Train's YouTube tutorial.
-                    </p>
-                  </a>
-                </li>
-                <li>
-                  <a href="/To-Do-List/" target="blank">
-                    <h2>To-Do List</h2>
-                    <p>
-                      A to-do list web application written in JavaScript that utilizes local storage to dynamically render content.
-                    </p>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/JMantello/JMantello.github.io"
-                    target="blank"
-                  >
-                    <h2>Web Portfolio</h2>
-                    <p>The current iteration of my web portfolio</p>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/JMantello/Blackjack_JMantello"
-                    target="blank"
-                  >
-                    <h2>Blackjack</h2>
-                    <p>C# WinForms Blackjack Project</p>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/JMantello/TicTacToe_JM"
-                    target="blank"
-                  >
-                    <h2>Tic Tac Toe</h2>
-                    <p>A Tic Tac Toe game using JFrames in Java to demonstrate class seperation</p>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/JMantello/CSI140_FinalProject_JMantello---Final"
-                    target="blank"
-                  >
-                    <h2>CSI140 Front-End Web Development Final Project</h2>
-                    <p>A web portfolio project completed in Spring Quarter, 2021</p>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </details>
-        </div>
+<body onload="getPreferredTheme()">
+  <div class="page-wrapper">
+    <div class="header-line"></div>
+    <div class="header">
+      <h1>Jonathan Mantello</h1>
+      <h2>Software Engineer Studying at Renton Technical College</h2>
+      <div class="theme-preference-section">
+        <p>Dark Theme</p>
+        <label class="switch">
+          <input type="checkbox" id="darkThemeCheckbox" onclick="setColorTheme()" />
+          <span class="slider"></span>
+        </label>
       </div>
     </div>
-  </body>
+
+    <div class="main-content-wrapper">
+      <div class="profile-img-section">
+        <img class="profile-img" src="Images\Photo of Me Square.JPG" alt="Profile Image" />
+      </div>
+
+      <div class="details-section">
+        <details open>
+          <summary>Bio</summary>
+          <div class="details-content">
+            <p>
+              With the encouragement and support of my parents, my family, and
+              my friends, I decided to following the path that curiosity,
+              ambition, and commitment leads me, and study computer science at
+              Renton Technical College. I am currently pursuing a career in
+              software development.
+            </p>
+
+            <p>
+              I also hold an associate's degree in Digital Audio
+              Engineering obtained from Shoreline Community College in 2018,
+              and will be completing my bachelors's degree in Application Development
+              at Renton Technical College in Spring of 2024. I am currently
+              seeking out internships, apprenticeships, and entry-level
+              software engineering opportunities. I am also very interested in
+              the natural and life sciences, including space and astronomy,
+              meteorology, geology, oceanography, and microbiology.
+            </p>
+
+            <p>
+              Everyone once in their lives, if they have the capacity, should
+              experience live music. I've been collaborating with musicians
+              and songwriters to compose, record, and perform original music
+              since I was 12 years old. The lessons I have learned from music about being
+              open with my ideas and being able to accept success and failure
+              while expressing them has helped me tremendously. When making
+              music with others, it is about having a common investment in the
+              creation of great sounds.
+            </p>
+
+            <p>
+              Please check out some of my projects on my GitHub account linked
+              below, or under the education section of my LinkedIn profile.
+              There are also links in the section below.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Music</summary>
+          <div class="details-content">
+            <div class="embeddedVideo">
+              <p>
+                Here's I am at 12 years old on the left guitar with my first
+                band, Castbound:
+              </p>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/5xOUxPbDapc"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+
+            <div class="embeddedVideo">
+              <p>
+                And here on bass with COSMOS at the EMP Sound Off! in 2016:
+              </p>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/ozdPQcVEOXs"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </details>
+
+        <details open>
+          <summary>Links</summary>
+          <div class="details-content">
+            <div class="contact-links">
+              <a href="https://www.linkedin.com/in/jonathan-mantello/" target="blank" class="link">
+                <i class="fa fa-linkedin-square"></i>
+                <p>LinkedIn</p>
+              </a>
+              <a href="https://github.com/JMantello" target="blank" class="link">
+                <i class="fa fa-github"></i>
+                <p>GitHub</p>
+              </a>
+              <a href="/Resume/JMantello_Resume_August_2022.pdf" class="link">
+                <i class="fa fa-file-pdf-o"></i>
+                <p>Resume</p>
+              </a>
+              <a href="mailto:jonathan.mantello@gmail.com" class="link">
+                <i class="fa fa-envelope-o"></i>
+                <p>Email</p>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <details open class="projects">
+          <summary>Projects</summary>
+          <div class="details-content">
+            <ul>
+              <li>
+                <a href="https://github.com/JMantello/Log-In-System-MongoDB" target="blank">
+                  <h2>Server-Side Log In System for ASP .NET and MongoDB</h2>
+                  <p>
+                    This is an implementation of a backend system in .NET that allows for a user to create credentails
+                    with a email/username
+                    and password, log in to the system which generates a session token, and log out of the system which
+                    deletes the token.
+                    All of the data is stored and interfaced with a cloud instance of MongoDB.
+                  </p>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/JMantello/Special-Needs-Analysis-Calculator-API" target="blank">
+                  <h2>Special Needs Analysis Calculator API</h2>
+                  <p>
+                    C# ASP .NET API for managing expenses related to dependents with special needs.
+                  </p>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/JMantello/Student-Loan-Calculator-API" target="blank">
+                  <h2>Student Loan Calculator API</h2>
+                  <p>
+                    C# ASP .NET API for calculating student loan opportunity cost for investing
+                  </p>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/JMantello/Calendar-Web-App" target="blank">
+                  <h2>Calendar Web App</h2>
+                  <p>
+                    A calendar-like scheduling system built with ASP .NET MVC allowing for scheduling and maintaining
+                    appointments with multiple clients, similar to Calendly and Hubspot.
+                  </p>
+                </a>
+              </li>
+              <li>
+                <a href="/JavaScriptFrameVisualizer/" target="blank">
+                  <h2>JavaScript Frame Analyzer</h2>
+                  <p>
+                    A Javascript Scope/Frame Analyzer written in
+                    JavaScript, designed for client-side scripting class requirements.
+                  </p>
+                </a>
+              </li>
+
+              <li>
+                <a href="/To-Do-List/" target="blank">
+                  <h2>To-Do List</h2>
+                  <p>
+                    A to-do list web application written in vanilla JavaScript that utilizes local storage to
+                    dynamically render
+                    content.
+                  </p>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/JMantello/JMantello.github.io" target="blank">
+                  <h2>Web Portfolio</h2>
+                  <p>The current iteration of my web portfolio</p>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/JMantello/Blackjack_JMantello" target="blank">
+                  <h2>Blackjack</h2>
+                  <p>C# WinForms Blackjack Project</p>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/JMantello/TicTacToe_JM" target="blank">
+                  <h2>Tic Tac Toe</h2>
+                  <p>A Tic Tac Toe game using JFrames in Java to demonstrate class seperation</p>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/JMantello/CSI140_FinalProject_JMantello---Final" target="blank">
+                  <h2>CSI140 Front-End Web Development Final Project</h2>
+                  <p>A web portfolio project completed in Spring Quarter, 2021</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
