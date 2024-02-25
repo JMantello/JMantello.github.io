@@ -2,226 +2,252 @@
 <html lang="en">
 
 <head>
-  <script src="js/script.js"></script>
-  <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jonathan Mantello's Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Jonathan Mantello is a software engineer at Expedia Group. He develops and maintains effective enterprise backend solutions and services related to search.">
+
+  <title>Jonathan | Portfolio</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@300;400&display=swap" rel="stylesheet" />
+
   <!-- Font Awesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
     integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </head>
 
-<body onload="getPreferredTheme()">
-  <div class="page-wrapper">
-    <div class="header-line"></div>
-    <div class="header">
+<body>
+  <nav>
+    <div id="nav-logo">
+      <img src="icons/jm-logo.svg">
+    </div>
+    <div id="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact</a>
+
+      <!-- dark mode by Rainbow Designs from <a href="https://thenounproject.com/browse/icons/term/dark-mode/" target="_blank" title="dark mode Icons">Noun Project</a> (CC BY 3.0) -->
+      <!-- dark mode by Rainbow Designs from <a href="https://thenounproject.com/browse/icons/term/dark-mode/" target="_blank" title="dark mode Icons">Noun Project</a> (CC BY 3.0) -->
+      <img id="dark-mode-icon" src="icons/noun-dark-mode-4066358.svg">
+    </div>
+  </nav>
+  <main class="page-width">
+    <section id="section-1">
       <h1>Jonathan Mantello</h1>
-      <h2>Software Engineer Studying at Renton Technical College</h2>
-      <div class="theme-preference-section">
-        <p>Dark Theme</p>
-        <label class="switch">
-          <input type="checkbox" id="darkThemeCheckbox" onclick="setColorTheme()" />
-          <span class="slider"></span>
-        </label>
+      <h2>Software Engineer at Expedia Group</h2>
+      <div class="contact-links">
+        <a href="/resume/JMantello-Resume-January-2024.pdf" target="_blank" class="link">
+          <i class="fa fa-file-pdf-o"></i>
+          <p>Resume</p>
+        </a>
+        <a href="https://github.com/JMantello" target="blank" class="link">
+          <i class="fa fa-github"></i>
+          <p>GitHub</p>
+        </a>
+        <a href="https://www.linkedin.com/in/jonathan-mantello/" target="blank" class="link">
+          <i class="fa fa-linkedin-square"></i>
+          <p>LinkedIn</p>
+        </a>
+        <a href="mailto:jonathan.mantello@gmail.com" target="_blank" class="link">
+          <i class="fa fa-envelope-o"></i>
+          <p>Email</p>
+        </a>
       </div>
-    </div>
+    </section>
 
-    <div class="main-content-wrapper">
-      <div class="profile-img-section">
-        <img class="profile-img" src="Images\Photo of Me Square.JPG" alt="Profile Image" />
+    <section id="section-2">
+      <h2>About</h2>
+      <p>In my current role at Expedia Group, I am develop and maintain effective enterprise backend
+        solutions and services
+        related to search. My responsibilities include analyzing current system health, improving observability
+        through
+        metrics collection and system monitoring, vulnarability management, and feature development. I work primarily
+        with Kotlin, Java, and Spring Boot to develop gRPC services in an Agile setting.
+      </p>
+      <p>
+        I've always been interested in science, mathematics, and technology. In 2019, I decided to pursue an education
+        in computer science to transition into a sofware engineering career. I graduated from renton technical college
+        in 2022 with high honors, completed an apprenticeship at Envestnet MoneyGuide, and awill now be completeing my
+        apprenticeship with Expedia Group in April.
+      </p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="container left">
+          <img src="icons/EG_CompleteLogo_White-on-Transparent_04-27-2023.svg" alt="Expedia Group Logo" />
+          <div class="content">
+            <h3>2023 - Present</h2>
+              <p>Software Engineer at Expedia Group.</p>
+          </div>
+        </div>
+        <div class="container right">
+          <img src="icons/Envestnet_color_rgb.svg" alt="Envestnet MoneyGuide Logo" />
+          <div class="content">
+            <h3>2022</h2>
+              <p>Back-End Developer Intern at Envestnet MoneyGuide</p>
+          </div>
+        </div>
+        <div class="container left">
+          <img src="icons/RTC-registered.jpg" alt="Renton Technical College Logo" id="rtc-logo" />
+          <div class="content">
+            <h3>2020 - 2022</h2>
+              <p>Graduated with high honors from Renton Technical College.</p>
+          </div>
+        </div>
+        <!-- You can continue adding milestones here. -->
+        <!-- Shoreline -->
       </div>
 
-      <div class="details-section">
-        <details open>
-          <summary>Bio</summary>
-          <div class="details-content">
+    </section>
+
+    <section id="section-3">
+      <h2>Projects</h2>
+
+      <div id="project-1" class="project-section">
+        <h3>Secret Recipe API -
+          <a href="https://github.com/jm-multiverse/secret-recipe">GitHub Repository</a>
+        </h3>
+        <p>Social platform for food enthusiasts - RESTful API with Kotlin, Spring Boot, JWT, Grafana/Prometheus.</p>
+        <div class="content">
+          <img src="icons/secret-recipe-api.ico" alt="Secret Recipe API Icon" />
+          <div id="description">
+            <h3>Description</h3>
             <p>
-              With the encouragement and support of my parents, my family, and
-              my friends, I decided to following the path that curiosity,
-              ambition, and commitment leads me, and study computer science at
-              Renton Technical College. I am currently pursuing a career in
-              software development.
+              A RESTful social platform for food enthusiasts to share and discover recipes. Built
+              with
+              Kotlin and Spring Boot, it allows users to publish, edit, and delete recipes, and interact with other
+              users
+              by
+              following them, saving recipes, and leaving reviews. It's designed for scalability and flexibility while
+              supporting a broad range of social interactions among users.
             </p>
-
-            <p>
-              I also hold an associate's degree in Digital Audio
-              Engineering obtained from Shoreline Community College in 2018,
-              and will be completing my bachelors's degree in Application Development
-              at Renton Technical College in Spring of 2024. I am currently
-              seeking out internships, apprenticeships, and entry-level
-              software engineering opportunities. I am also very interested in
-              the natural and life sciences, including space and astronomy,
-              meteorology, geology, oceanography, and microbiology.
-            </p>
-
-            <p>
-              Everyone once in their lives, if they have the capacity, should
-              experience live music. I've been collaborating with musicians
-              and songwriters to compose, record, and perform original music
-              since I was 12 years old. The lessons I have learned from music about being
-              open with my ideas and being able to accept success and failure
-              while expressing them has helped me tremendously. When making
-              music with others, it is about having a common investment in the
-              creation of great sounds.
-            </p>
-
-            <p>
-              Please check out some of my projects on my GitHub account linked
-              below, or under the education section of my LinkedIn profile.
-              There are also links in the section below.
-            </p>
-          </div>
-        </details>
-
-        <details>
-          <summary>Music</summary>
-          <div class="details-content">
-            <div class="embeddedVideo">
-              <p>
-                Here's I am at 12 years old on the left guitar with my first
-                band, Castbound:
-              </p>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/5xOUxPbDapc"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-            </div>
-
-            <div class="embeddedVideo">
-              <p>
-                And here on bass with COSMOS at the EMP Sound Off! in 2016:
-              </p>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/ozdPQcVEOXs"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-            </div>
-          </div>
-        </details>
-
-        <details open>
-          <summary>Links</summary>
-          <div class="details-content">
-            <div class="contact-links">
-              <a href="https://www.linkedin.com/in/jonathan-mantello/" target="blank" class="link">
-                <i class="fa fa-linkedin-square"></i>
-                <p>LinkedIn</p>
-              </a>
-              <a href="https://github.com/JMantello" target="blank" class="link">
-                <i class="fa fa-github"></i>
-                <p>GitHub</p>
-              </a>
-              <a href="/Resume/JMantello_Resume_November_2022.pdf" class="link">
-                <i class="fa fa-file-pdf-o"></i>
-                <p>Resume</p>
-              </a>
-              <a href="mailto:jonathan.mantello@gmail.com" class="link">
-                <i class="fa fa-envelope-o"></i>
-                <p>Email</p>
-              </a>
+            <div class="brand-icon-container">
+              <img src="icons/kotlinlang-ar21.svg" alt="Kotlin Icon" />
+              <img src="icons/springio-ar21.svg" alt="Spring Boot Icon" />
+              <img src="icons/grafana-ar21.svg" alt="Grafana Icon" />
+              <img src="icons/docker-ar21.svg" alt="Docker Icon" />
+              <img src="icons/getpostman-ar21.svg" alt="Postman Icon" />
             </div>
           </div>
-        </details>
-
-        <details open class="projects">
-          <summary>Projects</summary>
-          <div class="details-content">
-            <ul>
-              <li>
-                <a href="https://github.com/JMantello/Log-In-System-MongoDB" target="blank">
-                  <h2>Server-Side Log In System for ASP .NET and MongoDB</h2>
-                  <p>
-                    This is an implementation of a backend system in .NET that allows for a user to create credentails
-                    with a email/username
-                    and password, log in to the system which generates a session token, and log out of the system which
-                    deletes the token.
-                    All of the data is stored and interfaced with a cloud instance of MongoDB.
-                  </p>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/JMantello/Special-Needs-Analysis-Calculator-API" target="blank">
-                  <h2>Special Needs Analysis Calculator API</h2>
-                  <p>
-                    C# ASP .NET API for managing expenses related to dependents with special needs.
-                  </p>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/JMantello/Student-Loan-Calculator-API" target="blank">
-                  <h2>Student Loan Calculator API</h2>
-                  <p>
-                    C# ASP .NET API for calculating student loan opportunity cost for investing
-                  </p>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/JMantello/Calendar-Web-App" target="blank">
-                  <h2>Calendar Web App</h2>
-                  <p>
-                    A calendar-like scheduling system built with ASP .NET MVC allowing for scheduling and maintaining
-                    appointments with multiple clients, similar to Calendly and Hubspot.
-                  </p>
-                </a>
-              </li>
-              <li>
-                <a href="/JavaScriptFrameVisualizer/" target="blank">
-                  <h2>JavaScript Frame Analyzer</h2>
-                  <p>
-                    A Javascript Scope/Frame Analyzer written in
-                    JavaScript, designed for client-side scripting class requirements.
-                  </p>
-                </a>
-              </li>
-
-              <li>
-                <a href="/To-Do-List/" target="blank">
-                  <h2>To-Do List</h2>
-                  <p>
-                    A to-do list web application written in vanilla JavaScript that utilizes local storage to
-                    dynamically render
-                    content.
-                  </p>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/JMantello/JMantello.github.io" target="blank">
-                  <h2>Web Portfolio</h2>
-                  <p>The current iteration of my web portfolio</p>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/JMantello/Blackjack_JMantello" target="blank">
-                  <h2>Blackjack</h2>
-                  <p>C# WinForms Blackjack Project</p>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/JMantello/TicTacToe_JM" target="blank">
-                  <h2>Tic Tac Toe</h2>
-                  <p>A Tic Tac Toe game using JFrames in Java to demonstrate class seperation</p>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/JMantello/CSI140_FinalProject_JMantello---Final" target="blank">
-                  <h2>CSI140 Front-End Web Development Final Project</h2>
-                  <p>A web portfolio project completed in Spring Quarter, 2021</p>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </details>
+        </div>
       </div>
-    </div>
-  </div>
+
+
+      <div id="project-2" class="project-section">
+        <h3>Spaceflight News UI -
+          <a href="https://github.com/jm-multiverse/spaceflight-news" target="_blank">GitHub Repository</a>
+        </h3>
+        <p>For browsing news articles, blogs, and reports related to spaceflight and launch events.</p>
+        <div class="content">
+          <img src="icons/spaceflight-news.svg" alt="Spaceflight News UI Icon" />
+          <div id="description">
+            <p>
+              A React web application for browsing news articles, blogs, and reports related to
+              spaceflight and launch events. It's integrated with the Spaceflight News API, a
+              free-to-use, public API that provides up-to-date spaceflight news. Designed to be
+              responsive and accessible, and it provides a clean and
+              intuitive user interface for browsing and reading spaceflight news.
+            </p>
+            <div class="brand-icon-container">
+              <img src="icons/reactjs-ar21.svg" alt="React Icon" />
+              <img src="icons/javascript-ar21.svg" alt="JavaScript Icon" />
+              <img src="icons/tailwindcss-ar21.svg" alt="Tailwind CSS Icon" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="view-more-projects-section">
+        <div id="view-more-projects-description">
+          <p>To view more of my projects, visit my GitHub profile.</p>
+          <a id="view-more-projects-button" href="https://github.com/JMantello" target="blank" class="link">
+            <i class="fa fa-github"></i>
+            <span>View More Projects</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-5">
+      <h2>Skills</h2>
+      <p>
+        I have experience with a variety of tools and technologies, including Java, Kotlin, Spring Boot, gRPC, MongoDB,
+        Docker, Atlassian Jira, Datadog, Splunk, Grafana, and more. I'm also familiar with JavaScript, React, and
+        Postman.
+      </p>
+
+      <ul id="skills-list">
+        <li>
+          <strong>Project Management</strong>:
+          Agile, Jira, Confluence, Standups, Retrospectives, Sprint Planning.
+        </li>
+        <li>
+          <strong>Development</strong>:
+          Java, Kotlin, Spring Boot, JavaScript (React), C#.
+        </li>
+        <li>
+          <strong>Practices</strong>:
+          Practices: Version Control (Git), gRPC, Metrics, Documentation, Clean Code, Code Reviews, Unit/Integration
+          Testing.
+        </li>
+        <li>
+          <strong>Tools</strong>:
+          GitHub Actions, Spinnaker, Jenkins, Docker.
+        </li>
+        <li>
+          <strong>Observability & Monitoring</strong>:
+          Spring Boot Actuator, Micrometer, Splunk, Datadog, Grafana.
+        </li>
+        <li>
+          <strong>Databases</strong>:
+          SQL Server, MongoDB, PostgreSQL.
+        </li>
+      </ul>
+
+    </section>
+
+    <div id="space-filler"></div>
+
+    <section>
+      <h2>Technologies</h2>
+      <div id="tech-icons">
+        <img src="icons/atlassian_jira-ar21.svg">
+        <img src="icons/datadoghq-ar21.svg">
+        <img src="icons/docker-ar21.svg">
+        <img src="icons/dotnet-ar21.svg">
+        <img src="icons/getpostman-ar21.svg">
+        <img src="icons/github-ar21.svg">
+        <img src="icons/grafana-ar21.svg">
+        <img src="icons/grpcio-ar21.svg">
+        <img src="icons/java-ar21.svg">
+        <img src="icons/javascript-ar21.svg">
+        <img src="icons/kotlinlang-ar21.svg">
+        <img src="icons/mongodb-ar21.svg">
+        <img src="icons/slack-ar21.svg">
+        <img src="icons/splunk-ar21.svg">
+        <img src="icons/springio-ar21.svg">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Jonathan Mantello</p>
+  </footer>
+
 </body>
 
 </html>
