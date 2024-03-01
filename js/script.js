@@ -23,3 +23,13 @@ function addDarkTheme() {
 function removeDarkTheme() {
   document.body.classList.remove("dark-theme");
 }
+
+function toggleMenu() {
+  var links = document.getElementById("nav-links");
+  if (links.style.display === "flex") {
+    links.style.display = "none";
+  } else {
+    links.style.display = "flex";
+  }
+  links.classList.toggle('active');
+}
