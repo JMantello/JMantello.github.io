@@ -115,8 +115,7 @@ a:hover {
 footer {
   text-align: center;
   padding: 1rem;
-  /* background-color: var(--bg-color-light); */
-  /* border-top: 1px solid var(--border-color); */
+  border-top: 1px solid var(--border-color);
 }
 
 nav {
@@ -125,11 +124,21 @@ nav {
   align-items: center;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--bg-color-dark);
+  padding: 0 1rem 0 0;
 }
 
 #nav-logo {
+  background-color: var(--text-color);
+  display: flex;
   cursor: pointer;
-  margin: 1rem 2rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+#nav-logo img {
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 #nav-links {
@@ -238,10 +247,12 @@ nav {
   justify-content: center;
 }
 
-.project-section img {
+.project-logo {
   margin-right: 1rem;
   max-width: 195px;
   max-height: 195px;
+  object-fit: contain;
+  align-self: start;
 }
 
 .brand-icon-container {
@@ -284,12 +295,13 @@ nav {
 }
 
 #skills-list {
-  margin: 2rem;
-  list-style-type: disc;
-  list-style-position: inside;
+  margin: 2rem auto 1rem 4rem;
   font-size: 1.1rem;
-  line-height: 1.5;
   font-weight: 300;
+}
+
+#skills-list li {
+  margin: 0.5rem 0;
 }
 
 #tech-icons {
@@ -301,6 +313,10 @@ nav {
 }
 
 @media screen and (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+
   #nav-links {
     display: none;
   }
@@ -334,7 +350,7 @@ nav {
     margin: 2rem auto 1rem 2rem;
   }
 
-  .project-section img {
+  .project-logo {
     margin: auto;
     padding-bottom: 1rem;
 
@@ -345,19 +361,40 @@ nav {
   }
 
   #view-more-projects-section {
-    width: fit-content;
-    margin: auto;
     padding: 1rem;
   }
 
   #view-more-projects-description {
     flex-direction: column;
-    width: fit-content;
+    min-width: fit-content;
     margin: auto;
+  }
+
+  #view-more-projects-button {
+    margin: 1rem 0 0.3rem 0;
   }
 
   #tech-icons {
     margin: 1rem;
   }
+}
 
+@media screen and (max-width: 480px) {
+  section {
+    padding: 1rem;
+  }
+
+  .timeline img {
+    max-width: 150px;
+  }
+
+  .timeline .container {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+  }
+
+  #skills-list {
+    margin: 2rem auto 1rem 1rem;
+  }
 }
