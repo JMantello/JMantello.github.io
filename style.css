@@ -270,7 +270,7 @@ nav {
 }
 
 .brand-icon-container {
-  margin: 2rem 0;
+  margin: 3rem 0 1rem 0;
 }
 
 #view-more-projects-section {
@@ -328,7 +328,7 @@ nav {
 
 @media screen and (max-width: 768px) {
   main {
-    padding: 1rem 0.5rem 2rem 0.5rem;
+    padding: 2rem 0.5rem;
   }
 
   #hamburger-menu {
