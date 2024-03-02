@@ -115,8 +115,7 @@ a:hover {
 footer {
   text-align: center;
   padding: 1rem;
-  /* background-color: var(--bg-color-light); */
-  /* border-top: 1px solid var(--border-color); */
+  border-top: 1px solid var(--border-color);
 }
 
 nav {
@@ -125,11 +124,21 @@ nav {
   align-items: center;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--bg-color-dark);
+  padding: 0 1rem 0 0;
 }
 
 #nav-logo {
+  background-color: var(--text-color);
+  display: flex;
   cursor: pointer;
-  margin: 1rem 2rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+#nav-logo img {
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 #nav-links {
@@ -152,9 +161,23 @@ nav {
   margin-left: 1rem;
 }
 
+#hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+#hamburger-menu .bar {
+  background-color: var(--text-color);
+  height: 3px;
+  width: 25px;
+  margin-bottom: 5px;
+  transition: all 0.3s ease;
+}
+
 .timeline {
   position: relative;
-  /* max-width: 800px; */
   margin: 2rem auto 1rem auto;
 }
 
@@ -228,7 +251,7 @@ nav {
 }
 
 .project-section {
-  margin: 1rem 0 3.5rem 0;
+  margin: 1rem 0 2rem 0;
 }
 
 .project-section .content {
@@ -238,10 +261,16 @@ nav {
   justify-content: center;
 }
 
-.project-section img {
+.project-logo {
   margin-right: 1rem;
   max-width: 195px;
   max-height: 195px;
+  object-fit: contain;
+  align-self: start;
+}
+
+.brand-icon-container {
+  margin: 3rem 0 1rem 0;
 }
 
 #view-more-projects-section {
@@ -281,11 +310,12 @@ nav {
 
 #skills-list {
   margin: 2rem auto 1rem 4rem;
-  list-style-type: disc;
-  list-style-position: inside;
   font-size: 1.1rem;
-  line-height: 1.5;
   font-weight: 300;
+}
+
+#skills-list li {
+  margin: 0.5rem 0;
 }
 
 #tech-icons {
@@ -294,4 +324,116 @@ nav {
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 2rem 0.5rem;
+  }
+
+  #hamburger-menu {
+    display: flex;
+    /* Show the hamburger */
+  }
+
+  /* When nav-links is active, apply some transformations */
+  #nav-links.active {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* Take the full width of the nav */
+    padding: 1rem;
+  }
+
+  #nav-links a,
+  #dark-mode-icon {
+    margin-bottom: 1rem;
+    /* Add space between menu items */
+  }
+
+  #nav-links {
+    display: none;
+  }
+
+  /* #nav-links.active {
+    display: flex;
+  } */
+
+  nav {
+    justify-content: space-between;
+    padding-right: 0.5rem;
+  }
+
+  #hamburger-icon {
+    display: block;
+  }
+
+  .timeline::after {
+    left: 20px;
+  }
+
+  .timeline .container {
+    padding: 0px 0px 0px 30px;
+  }
+
+  .timeline .content {
+    padding: 1rem;
+    min-width: 200px;
+  }
+
+  #rtc-logo {
+    padding: 1.5rem;
+  }
+
+  #skills-list {
+    margin: 2rem auto 1rem 2rem;
+  }
+
+  .project-logo {
+    margin: auto;
+    padding-bottom: 1rem;
+
+  }
+
+  .project-section .content {
+    flex-direction: column;
+  }
+
+  #view-more-projects-section {
+    padding: 1rem;
+  }
+
+  #view-more-projects-description {
+    flex-direction: column;
+    min-width: fit-content;
+    margin: auto;
+  }
+
+  #view-more-projects-button {
+    margin: 1rem 0 0.3rem 0;
+  }
+
+  #tech-icons {
+    margin: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  section {
+    padding: 1rem;
+  }
+
+  .timeline img {
+    max-width: 150px;
+  }
+
+  .timeline .container {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+  }
+
+  #skills-list {
+    margin: 2rem auto 1rem 1rem;
+  }
 }

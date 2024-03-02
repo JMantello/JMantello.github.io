@@ -24,7 +24,7 @@
     rel="stylesheet">
 
   <!-- JavaScript -->
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </head>
 
 <body>
@@ -32,6 +32,14 @@
     <div id="nav-logo">
       <img src="icons/jm-logo.svg">
     </div>
+
+    <!-- Hamburger Menu Icon -->
+    <div id="hamburger-menu" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
     <div id="nav-links">
       <a href="#">Home</a>
       <a href="#">About</a>
@@ -69,18 +77,16 @@
 
     <section id="section-2">
       <h2>About</h2>
-      <p>In my current role at Expedia Group, I am develop and maintain effective enterprise backend
-        solutions and services
-        related to search. My responsibilities include analyzing current system health, improving observability
-        through
-        metrics collection and system monitoring, vulnarability management, and feature development. I work primarily
-        with Kotlin, Java, and Spring Boot to develop gRPC services in an Agile setting.
+      <p>In my current role at Expedia Group, I develop and maintain backend services and solutions
+        related to search. I am a strong believer that the right solution for the current problem is a balanced approach
+        of simplicity and extensbility. I enjoy working with a team to solve complex problems and deliver high-quality
+        software adhearing to standards of clean code, documentation, and best practices.
       </p>
       <p>
-        I've always been interested in science, mathematics, and technology. In 2019, I decided to pursue an education
-        in computer science to transition into a sofware engineering career. I graduated from renton technical college
-        in 2022 with high honors, completed an apprenticeship at Envestnet MoneyGuide, and awill now be completeing my
-        apprenticeship with Expedia Group in April.
+        In 2019, I decided to pursue a career transition into sofware development, and I graduated from Renton Technical
+        College in 2022 with high honors. Along the way, I've learned a lot, and I will now be completeing my 15-month
+        long apprenticeship with Expedia Group and Multiverse. I'm excited to continue my journey as a software engineer
+        and see where in the world it takes me.
       </p>
     </section>
 
@@ -92,6 +98,14 @@
           <div class="content">
             <h3>2023 - Present</h2>
               <p>Software Engineer at Expedia Group.</p>
+              <!-- Maybe a short list would be nice here -->
+              <!-- <p>
+                My responsibilities include analyzing current system health and performance, enhancing system
+                observability through metrics collection and monitoring, feature development, and vulnerability
+                management. I
+                work primarily with Kotlin, Java, and Spring Boot in a reactive microservices environment driven by
+                gRPC.
+              </p> -->
           </div>
         </div>
         <div class="container right">
@@ -111,7 +125,6 @@
         <!-- You can continue adding milestones here. -->
         <!-- Shoreline -->
       </div>
-
     </section>
 
     <section id="section-3">
@@ -123,7 +136,7 @@
         </h3>
         <p>Social platform for food enthusiasts - RESTful API with Kotlin, Spring Boot, JWT, Grafana/Prometheus.</p>
         <div class="content">
-          <img src="icons/secret-recipe-api.ico" alt="Secret Recipe API Icon" />
+          <img src="icons/secret-recipe-api.ico" alt="Secret Recipe API Icon" class="project-logo" />
           <div id="description">
             <h3>Description</h3>
             <p>
@@ -136,59 +149,68 @@
               supporting a broad range of social interactions among users.
             </p>
             <div class="brand-icon-container">
+              <h3>Technologies</h3>
+              <p>The project is built with Kotlin and Spring Boot for endpoints and security, JWT for authentication and
+                authorization, Grafana and Prometheus for monitoring and metrics, Docker Compose for orchestrating the
+                containerized services, K6 for load-testing, and Postman for live-documentation and testing the API.</p>
+              <br>
               <img src="icons/kotlinlang-ar21.svg" alt="Kotlin Icon" />
               <img src="icons/springio-ar21.svg" alt="Spring Boot Icon" />
               <img src="icons/grafana-ar21.svg" alt="Grafana Icon" />
-              <img src="icons/docker-ar21.svg" alt="Docker Icon" />
               <img src="icons/getpostman-ar21.svg" alt="Postman Icon" />
+              <img src="icons/docker-ar21.svg" alt="Docker Icon" />
             </div>
           </div>
         </div>
-      </div>
 
+        <div id="project-2" class="project-section">
+          <h3>Spaceflight News UI -
+            <a href="https://github.com/jm-multiverse/spaceflight-news" target="_blank">GitHub Repository</a>
+          </h3>
+          <p>For browsing news articles, blogs, and reports related to spaceflight and launch events.</p>
+          <div class="content">
+            <img id="spaceflight-news-icon" src="icons/spaceflight-news.svg" alt="Spaceflight News UI Icon"
+              class="project-logo" />
+            <div id="description">
+              <h3>Description</h3>
+              <p>
+                A React web application for browsing news articles, blogs, and reports related to
+                spaceflight and launch events. It's integrated with the Spaceflight News API, a
+                free-to-use, public API that provides up-to-date spaceflight news. Designed to be
+                responsive and accessible, and it provides a clean and
+                intuitive user interface for browsing and reading spaceflight news.
+              </p>
+              <div class="brand-icon-container">
+                <h3>Technologies</h3>
+                <p>The project is built with React, JavaScript, and Tailwind CSS to desgin an intuitive and responsive
+                  user interface, including accessible themes and components, search and filter functionality, and a
+                  home page with the latest news articles.
 
-      <div id="project-2" class="project-section">
-        <h3>Spaceflight News UI -
-          <a href="https://github.com/jm-multiverse/spaceflight-news" target="_blank">GitHub Repository</a>
-        </h3>
-        <p>For browsing news articles, blogs, and reports related to spaceflight and launch events.</p>
-        <div class="content">
-          <img src="icons/spaceflight-news.svg" alt="Spaceflight News UI Icon" />
-          <div id="description">
-            <p>
-              A React web application for browsing news articles, blogs, and reports related to
-              spaceflight and launch events. It's integrated with the Spaceflight News API, a
-              free-to-use, public API that provides up-to-date spaceflight news. Designed to be
-              responsive and accessible, and it provides a clean and
-              intuitive user interface for browsing and reading spaceflight news.
-            </p>
-            <div class="brand-icon-container">
-              <img src="icons/reactjs-ar21.svg" alt="React Icon" />
-              <img src="icons/javascript-ar21.svg" alt="JavaScript Icon" />
-              <img src="icons/tailwindcss-ar21.svg" alt="Tailwind CSS Icon" />
+                </p>
+                <br>
+                <img src="icons/reactjs-ar21.svg" alt="React Icon" />
+                <img src="icons/javascript-ar21.svg" alt="JavaScript Icon" />
+                <img src="icons/tailwindcss-ar21.svg" alt="Tailwind CSS Icon" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div id="view-more-projects-section">
-        <div id="view-more-projects-description">
-          <p>To view more of my projects, visit my GitHub profile.</p>
-          <a id="view-more-projects-button" href="https://github.com/JMantello" target="blank" class="link">
-            <i class="fa fa-github"></i>
-            <span>View More Projects</span>
-          </a>
+        <div id="view-more-projects-section">
+          <div id="view-more-projects-description">
+            <p>To view more projects, visit my GitHub profile.</p>
+            <a id="view-more-projects-button" href="https://github.com/JMantello" target="blank" class="link">
+              <i class="fa fa-github"></i>
+              <span>View More Projects</span>
+            </a>
+          </div>
         </div>
-      </div>
     </section>
 
     <section id="section-5">
       <h2>Skills</h2>
       <p>
-        I have experience with a variety of tools and technologies, including Java, Kotlin, Spring Boot, gRPC, MongoDB,
-        Docker, Atlassian Jira, Datadog, Splunk, Grafana, and more. I'm also familiar with JavaScript, React, and
-        Postman.
-      </p>
+        Here are some of the skills I've developed throughout my career:
 
       <ul id="skills-list">
         <li>
@@ -224,6 +246,11 @@
 
     <section>
       <h2>Technologies</h2>
+      <p>
+        I have experience with a variety of tools and technologies, including Java, Kotlin, Spring Boot, gRPC, MongoDB,
+        Docker, Atlassian Jira, Datadog, Splunk, Grafana, JavaScript, React, Postman, and more. Here is a list of some
+        of the technologies I've worked with:
+      </p>
       <div id="tech-icons">
         <img src="icons/atlassian_jira-ar21.svg">
         <img src="icons/datadoghq-ar21.svg">
