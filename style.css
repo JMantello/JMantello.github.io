@@ -83,7 +83,7 @@ section {
   padding: 1.5rem;
 }
 
-#section-1 h2 {
+#about h2 {
   font-weight: 300;
 }
 
@@ -119,12 +119,16 @@ footer {
 }
 
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--bg-color-dark);
   padding: 0 1rem 0 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
 }
 
 #nav-logo {
@@ -189,13 +193,12 @@ nav {
   top: 0;
   bottom: 0;
   left: 30px;
-  margin-left: -1px;
+  margin-left: -20px;
 }
 
 .timeline .container {
   padding: 0px 0px 0px 40px;
   position: relative;
-  /* background-color: var(--bg-color-light); */
   display: flex;
   align-items: center;
 }
@@ -204,8 +207,6 @@ nav {
   padding: 1rem;
   position: relative;
   min-width: 240px;
-  /* background-color: var(--bg-color-light); */
-  /* border-radius: 6px; */
 }
 
 .timeline img {
@@ -336,36 +337,43 @@ nav {
     /* Show the hamburger */
   }
 
-  /* When nav-links is active, apply some transformations */
   #nav-links.active {
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* Take the full width of the nav */
     padding: 1rem;
   }
 
   #nav-links a,
   #dark-mode-icon {
     margin-bottom: 1rem;
-    /* Add space between menu items */
   }
 
   #nav-links {
     display: none;
   }
 
-  /* #nav-links.active {
-    display: flex;
-  } */
-
-  nav {
-    justify-content: space-between;
-    padding-right: 0.5rem;
+  #nav-links {
+    display: none;
+    position: fixed;
+    top: -100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: var(--bg-color-dark);
+    transition: bottom 0.3s;
+    z-index: 999;
+    padding: 1rem 0;
+    margin-top: 74px;
+    align-items: center;
   }
 
-  #hamburger-icon {
-    display: block;
+  #nav-links.active {
+    top: 0;
+  }
+
+  #nav-links a {
+    padding: 10px;
   }
 
   .timeline::after {
@@ -431,6 +439,12 @@ nav {
     display: flex;
     align-items: start;
     flex-direction: column;
+    padding: 0;
+    /* margin-left: 1.2rem; */
+  }
+
+  .timeline .content {
+    padding-right: 0;
   }
 
   #skills-list {

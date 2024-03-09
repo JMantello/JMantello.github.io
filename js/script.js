@@ -26,10 +26,6 @@ function removeDarkTheme() {
 
 function toggleMenu() {
   var links = document.getElementById("nav-links");
-  if (links.style.display === "flex") {
-    links.style.display = "none";
-  } else {
-    links.style.display = "flex";
-  }
   links.classList.toggle('active');
+  links.style.display = '';
 }
