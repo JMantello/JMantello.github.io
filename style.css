@@ -132,12 +132,12 @@ nav {
 }
 
 #nav-logo {
-  background-color: var(--text-color);
+  /* background-color: var(--text-color); */
   display: flex;
   cursor: pointer;
   align-items: center;
   padding: 1rem;
-  border: 1px solid var(--border-color);
+  /* border: 1px solid var(--border-color); */
 }
 
 #nav-logo img {
